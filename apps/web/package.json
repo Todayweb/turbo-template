@@ -3,17 +3,18 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbo",
+		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
 		"tsc": "tsc --noEmit --incremental",
 		"clean": "rm -rf .next && rm -rf node_modules"
 	},
 	"dependencies": {
+		"@repo/db": "workspace:*",
 		"@repo/ui": "workspace:*",
 		"next": "15.0.0-rc.1",
-		"react": "19.0.0-rc-77b637d6-20241016",
-		"react-dom": "19.0.0-rc-77b637d6-20241016"
+		"react": "19.0.0-rc-cd22717c-20241013",
+		"react-dom": "19.0.0-rc-cd22717c-20241013"
 	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*",
