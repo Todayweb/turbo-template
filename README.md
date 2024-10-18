@@ -1,31 +1,51 @@
 # Turborepo template
 
-## Using this example
+## Apps and Packages
 ```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `web`: another [Next.js](https://nextjs.org/) app
+- `web`: [Next.js](https://nextjs.org/) app
 - `@repo/db`: prisma db setup
 - `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-npm run build
 ```
 
-### Develop
+## Environment Variables
 
-To develop all apps and packages, run the following command:
+To run this project, you will need to add the following environment variables to your .env file
 
+#### packages/db/.env
+`DATABASE_URL`
+
+#### apps/web/.env
+`NEXT_PUBLIC_TEST`
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/todayweb/turbo-template.git
 ```
-npm run dev
+
+Go to the project directory
+
+```bash
+  cd turbo-template
 ```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+## Authors
+
+- [@l0st0](https://github.com/l0st0)
+
+
