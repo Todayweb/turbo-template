@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { Montserrat } from "next/font/google";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.variable}>
+      <body>
         <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>
