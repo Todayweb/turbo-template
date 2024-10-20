@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "Nazdar"
+  },
+  "LocaleSwitcher": {
+    "sk": "Slovensky",
+    "en": "English",
+    "label": "Jazyk"
+  }
+}
