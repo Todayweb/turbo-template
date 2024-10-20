@@ -1,4 +1,9 @@
 {
+  "NotFound": {
+    "title": "Sorry, the page you visited does not exist...",
+    "back": "Back",
+    "backHome": "Home"
+  },
   "HomePage": {
     "title": "Hello world!"
   },
@@ -6,5 +11,11 @@
     "sk": "Slovensky",
     "en": "English",
     "label": "Language"
+  },
+  "ThemeSwitcher": {
+    "title": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

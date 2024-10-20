@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import { AntdConfigProvider } from "@/providers/AntdConfigProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { Montserrat as FontSans } from "next/font/google";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,10 +26,19 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={fontSans.variable}>
         <NextIntlClientProvider messages={messages}>
-          <AntdRegistry>{children}</AntdRegistry>
+          <ThemeProvider
+            defaultTheme="system"
+            attribute="class"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AntdRegistry>
+              <AntdConfigProvider>{children}</AntdConfigProvider>
+            </AntdRegistry>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

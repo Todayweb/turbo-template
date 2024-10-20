@@ -1,7 +1,29 @@
-@layer tailwind-base, antd;
-
 @layer tailwind-base {
   @tailwind base;
 }
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 39.5 33.3% 53.5%;
+    --error: 0 84.2% 60.2%;
+    --success: 125 84% 35%;
+  }
+
+  .dark {
+    --primary: 39.5 33.3% 53.5%;
+    --error: 0 84.2% 60.2%;
+    --success: 125 84% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply m-0 box-border p-0;
+  }
+
+  body {
+    @apply min-h-screen font-sans antialiased;
+  }
+}

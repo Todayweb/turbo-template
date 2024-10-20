@@ -1,4 +1,5 @@
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { prisma } from "@repo/db";
 import { Button } from "antd";
 import { getTranslations } from "next-intl/server";
@@ -13,6 +14,7 @@ export default async function Home() {
       <div>Env: {process.env.NEXT_PUBLIC_TEST}</div>
       <Button>{t("title")}</Button>
       <LocaleSwitcher />
+      <ThemeSwitcher />
     </div>
   );
 }

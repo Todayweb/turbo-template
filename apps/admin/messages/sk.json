@@ -1,4 +1,9 @@
 {
+  "NotFound": {
+    "title": "Je nám ĺúto, ale táto stránka neexistuje...",
+    "back": "Späť",
+    "backHome": "Domov"
+  },
   "HomePage": {
     "title": "Nazdar"
   },
@@ -6,5 +11,11 @@
     "sk": "Slovensky",
     "en": "English",
     "label": "Jazyk"
+  },
+  "ThemeSwitcher": {
+    "title": "Téma",
+    "light": "Svetlá",
+    "dark": "Tmavá",
+    "system": "Systém"
   }
 }
