@@ -2,8 +2,6 @@
   "name": "turbo-template",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
     "clean": "turbo clean && rm -rf node_modules && rm -rf package-lock.json && rm -rf .turbo",
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write"

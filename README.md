@@ -32,6 +32,12 @@ Go to the project directory
   cd turbo-template
 ```
 
+Install turbo
+
+```bash
+  npm install turbo --global
+```
+
 Install dependencies
 
 ```bash
@@ -41,7 +47,7 @@ Install dependencies
 Start the server
 
 ```bash
-  npm run dev
+  turbo dev --filter=web
 ```
 
 ## Authors
