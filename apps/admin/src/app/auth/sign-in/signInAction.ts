@@ -13,28 +13,29 @@ export type FormState = {
 };
 
 export const signInAction = async (_: unknown, data: FormData): Promise<FormState> => {
-  const t = await getTranslations("Form");
+  const tForm = await getTranslations("Form");
+  const tAuth = await getTranslations("Auth");
 
   const formData = Object.fromEntries(data);
-  const parsed = signInSchema(t).safeParse(formData);
+  const parsed = signInSchema(tAuth).safeParse(formData);
 
-  if (!parsed.success) return { error: t("wrongInput") };
+  if (!parsed.success) return { error: tForm("wrongInput") };
 
   const { email, password } = parsed.data;
 
   try {
     const user = await prisma.user.findUnique({ where: { email } });
-    if (!user) return { error: t("serverError") };
+    if (!user) return { error: tForm("serverError") };
 
     const isValidPassword = await argon2.verify(user.password, password);
-    if (!isValidPassword) return { error: t("serverError") };
+    if (!isValidPassword) return { error: tForm("serverError") };
 
     const token = generateSessionToken();
     createSession(token, user?.id);
     setSessionTokenCookie(token, new Date(new Date().getTime() + 30 * 60000));
   } catch (e) {
     console.error("error", e);
-    return { error: t("serverError") };
+    return { error: tForm("serverError") };
   }
 
   redirect(routes.home);
