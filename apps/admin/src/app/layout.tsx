@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import { TopBar } from "@/components/TopBar";
 import { AntdConfigProvider } from "@/providers/AntdConfigProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
@@ -36,7 +37,10 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <AntdRegistry>
-              <AntdConfigProvider>{children}</AntdConfigProvider>
+              <AntdConfigProvider>
+                <TopBar />
+                {children}
+              </AntdConfigProvider>
             </AntdRegistry>
           </ThemeProvider>
         </NextIntlClientProvider>

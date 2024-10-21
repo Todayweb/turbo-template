@@ -9,7 +9,25 @@ datasource db {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
+  email         String    @unique
+  password      String
+  role          Role      @default(editor)
   emailVerified DateTime?
+  name          String?
+
+  sessions Session[]
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+
+  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+enum Role {
+  admin
+  editor
+  banned
 }

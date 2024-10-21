@@ -17,6 +17,7 @@
     "tsc": { "cache": false },
     "clean": { "cache": false },
     "db:generate": { "cache": false },
+    "db:migrate:dev": { "cache": false },
     "//#format-and-lint": {},
     "//#format-and-lint:fix": { "cache": false }
   }

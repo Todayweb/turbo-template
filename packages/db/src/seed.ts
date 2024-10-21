@@ -1,31 +1,22 @@
+import type { User } from "@prisma/client";
+import * as argon2 from "argon2";
 import { prisma } from "./client";
 
-import type { User } from "@prisma/client";
-
-const DEFAULT_USERS = [
-  {
-    name: "Tim Apple",
-    email: "tim@apple.com",
-  },
-] as Array<Partial<User>>;
-
 (async () => {
+  const hashedPassword = await argon2.hash(process.env.ADMIN_PASSWORD as string);
+
+  const initUser = {
+    email: process.env.ADMIN_EMAIL as string,
+    password: hashedPassword,
+    role: "admin",
+  } as User;
+
   try {
-    await Promise.all(
-      DEFAULT_USERS.map((user) =>
-        prisma.user.upsert({
-          where: {
-            email: user.email || "",
-          },
-          update: {
-            ...user,
-          },
-          create: {
-            ...user,
-          },
-        }),
-      ),
-    );
+    await prisma.user.upsert({
+      create: initUser,
+      update: initUser,
+      where: { email: initUser.email },
+    });
   } catch (error) {
     console.error(error);
     process.exit(1);

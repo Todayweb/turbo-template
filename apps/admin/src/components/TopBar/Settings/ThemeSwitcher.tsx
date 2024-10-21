@@ -7,12 +7,12 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
 export const ThemeSwitcher = () => {
-  const t = useTranslations("ThemeSwitcher");
+  const t = useTranslations("Settings");
   const { setTheme, themes, theme: currentTheme } = useTheme();
 
   return (
     <div className="flex flex-col gap-1">
-      <Typography.Text strong>{t("title")}</Typography.Text>
+      <Typography.Text strong>{t("label")}</Typography.Text>
 
       <Radio.Group defaultValue={currentTheme} buttonStyle="solid">
         {themes.map((theme) => {
@@ -24,7 +24,7 @@ export const ThemeSwitcher = () => {
             <Radio.Button key={theme} value={theme} onClick={() => setTheme(theme)}>
               <Flex align="center">
                 {icon}
-                <p>{t(theme as Theme)}</p>
+                <p>{t(`theme.${theme as Theme}`)}</p>
               </Flex>
             </Radio.Button>
           );

@@ -1,21 +1,67 @@
 {
   "NotFound": {
     "title": "Je nám ĺúto, ale táto stránka neexistuje...",
-    "back": "Späť",
-    "backHome": "Domov"
+    "backHome": "Späť domov"
   },
-  "HomePage": {
-    "title": "Nazdar"
+  "Settings": {
+    "label": "Nastavenia",
+    "signOut": "Odhlásiť",
+    "locale": {
+      "sk": "Slovensky",
+      "en": "English",
+      "label": "Jazyk"
+    },
+    "theme": {
+      "label": "Téma",
+      "light": "Svetlá",
+      "dark": "Tmavá",
+      "system": "Systém"
+    }
   },
-  "LocaleSwitcher": {
-    "sk": "Slovensky",
-    "en": "English",
-    "label": "Jazyk"
+  "Form": {
+    "serverError": "Hupss.. niečo sa pokazilo. Skús znova.",
+    "wrongInput": "Wrong form data input."
   },
-  "ThemeSwitcher": {
-    "title": "Téma",
-    "light": "Svetlá",
-    "dark": "Tmavá",
-    "system": "Systém"
+  "Auth": {
+    "signIn": {
+      "title": "Prihlásiť sa",
+      "forgotPassword": "Zabudol si heslo?",
+      "button": "Pokračovať",
+      "form": {
+        "email": {
+          "label": "Email",
+          "palceholder": "Tvoja emailová adresa",
+          "error": "Email je povinný."
+        },
+        "password": {
+          "label": "Heslo",
+          "palceholder": "Tvoje heslo",
+          "error": "Heslo je povinné."
+        }
+      }
+    },
+    "passwordReset": {
+      "title": "Zabudol si heslo?",
+      "backToSignIn": "Späť na prihlásenie",
+      "resetPassword": "Resetovať heslo",
+      "resetPasswordSend": "Poslať inštrukcie",
+      "resetPasswordSuccess": "Ak máš účet, príde ti email na obnovenie hesla.",
+      "resetPasswordCallbackSuccess": "Resetovanie hesla prebehlo úspešne.",
+      "form": {
+        "password": {
+          "label": "Nové heslo",
+          "palceholder": "Vytvor nové heslo",
+          "error": "Nové heslo je povinné."
+        },
+        "passwordConfirm": {
+          "label": "Potvrdiť nové heslo",
+          "palceholder": "Znova tvoje nové heslo",
+          "error": {
+            "match": "Heslá sa nezhodujú.",
+            "min": "Potvrdzovacie heslo je povinné."
+          }
+        }
+      }
+    }
   }
 }

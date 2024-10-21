@@ -1,21 +1,67 @@
 {
   "NotFound": {
     "title": "Sorry, the page you visited does not exist...",
-    "back": "Back",
-    "backHome": "Home"
+    "backHome": "Back home"
   },
-  "HomePage": {
-    "title": "Hello world!"
+  "Settings": {
+    "label": "Settings",
+    "signOut": "Sign out",
+    "locale": {
+      "sk": "Slovensky",
+      "en": "English",
+      "label": "Language"
+    },
+    "theme": {
+      "label": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
   },
-  "LocaleSwitcher": {
-    "sk": "Slovensky",
-    "en": "English",
-    "label": "Language"
+  "Form": {
+    "serverError": "Hupss.. something went wrong. Try again.",
+    "wrongInput": "Wrong form data input."
   },
-  "ThemeSwitcher": {
-    "title": "Theme",
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System"
+  "Auth": {
+    "signIn": {
+      "title": "Sign in",
+      "forgotPassword": "Forgot your password?",
+      "button": "Continue",
+      "form": {
+        "email": {
+          "label": "Email",
+          "palceholder": "Your email address",
+          "error": "Email is required."
+        },
+        "password": {
+          "label": "Password",
+          "palceholder": "Your password",
+          "error": "Password is required."
+        }
+      }
+    },
+    "passwordReset": {
+      "title": "Forgot your password?",
+      "backToSignIn": "Back to sign in",
+      "resetPassword": "Reset password",
+      "resetPasswordSend": "Send instructions",
+      "resetPasswordSuccess": "You’ll receive a password reset email if you have an account.",
+      "resetPasswordCallbackSuccess": "Password reset was successfull.",
+      "form": {
+        "password": {
+          "label": "New password",
+          "palceholder": "Create a new password",
+          "error": "New password is required."
+        },
+        "passwordConfirm": {
+          "label": "Confirm new password",
+          "palceholder": "Enter your new password again",
+          "error": {
+            "match": "Passwords do not match.",
+            "min": "Confirm password is required."
+          }
+        }
+      }
+    }
   }
 }
