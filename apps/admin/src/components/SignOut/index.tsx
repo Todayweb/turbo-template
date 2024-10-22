@@ -6,14 +6,18 @@ import { useTranslations } from "next-intl";
 import { useFormState } from "react-dom";
 import { signOutAction } from "./signOutAction";
 
-export const SignOut = () => {
-  const t = useTranslations("Settings");
+type Props = {
+  iconOnly?: boolean;
+};
+
+export const SignOut = ({ iconOnly }: Props) => {
+  const t = useTranslations("Navigation");
   const [_, formAction] = useFormState(signOutAction, null);
 
   return (
-    <form action={formAction}>
-      <Button size="middle" className="w-full" htmlType="submit" icon={<LogoutOutlined />}>
-        {t("signOut")}
+    <form action={formAction} className="w-full">
+      <Button htmlType="submit" icon={<LogoutOutlined />} block>
+        {!iconOnly && t("signOut")}
       </Button>
     </form>
   );

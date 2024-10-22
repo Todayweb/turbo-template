@@ -3,9 +3,11 @@
     "title": "Je nám ĺúto, ale táto stránka neexistuje...",
     "backHome": "Späť domov"
   },
+  "Navigation": {
+    "signOut": "Odhlásiť"
+  },
   "Settings": {
     "label": "Nastavenia",
-    "signOut": "Odhlásiť",
     "locale": {
       "sk": "Slovensky",
       "en": "English",

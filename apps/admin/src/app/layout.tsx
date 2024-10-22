@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { TopBar } from "@/components/TopBar";
 import { AntdConfigProvider } from "@/providers/AntdConfigProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { cn } from "@/utils/cn";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
@@ -28,7 +28,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={fontSans.variable}>
+      <body className={cn("min-h-screen", fontSans.variable)}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             defaultTheme="system"
@@ -37,10 +37,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <AntdRegistry>
-              <AntdConfigProvider>
-                <TopBar />
-                {children}
-              </AntdConfigProvider>
+              <AntdConfigProvider>{children}</AntdConfigProvider>
             </AntdRegistry>
           </ThemeProvider>
         </NextIntlClientProvider>

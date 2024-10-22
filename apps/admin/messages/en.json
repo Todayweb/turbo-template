@@ -3,9 +3,11 @@
     "title": "Sorry, the page you visited does not exist...",
     "backHome": "Back home"
   },
+  "Navigation": {
+    "signOut": "Sign out"
+  },
   "Settings": {
     "label": "Settings",
-    "signOut": "Sign out",
     "locale": {
       "sk": "Slovensky",
       "en": "English",

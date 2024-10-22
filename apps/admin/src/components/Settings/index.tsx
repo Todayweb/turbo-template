@@ -1,15 +1,16 @@
-import { getCurrentSession } from "@/utils/auth";
 import { SettingsDrawer } from "./SettingsDrawer";
 import { SettingsDrawerProvider } from "./SettingsDrawerProvider";
 import { TriggerButton } from "./TriggerButton";
 
-export const Settings = async () => {
-  const { user } = await getCurrentSession();
+export type SettingsProps = {
+  iconOnly?: boolean;
+};
 
+export const Settings = ({ iconOnly }: SettingsProps) => {
   return (
     <SettingsDrawerProvider>
-      <TriggerButton />
-      <SettingsDrawer user={user} />
+      <TriggerButton iconOnly={iconOnly} />
+      <SettingsDrawer />
     </SettingsDrawerProvider>
   );
 };
