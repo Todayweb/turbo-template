@@ -4,7 +4,9 @@
     "backHome": "Späť domov"
   },
   "Navigation": {
-    "signOut": "Odhlásiť"
+    "signOut": "Odhlásiť",
+    "home": "Domov",
+    "administration": "Administrácia"
   },
   "Settings": {
     "label": "Nastavenia",

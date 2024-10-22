@@ -1,47 +1,42 @@
 "use client";
 
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Button, Layout, Menu, theme } from "antd";
+import { useNavItems } from "@/hooks/useNavItems";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import type { Role } from "@prisma/client";
+import { Button, Layout, Menu, type MenuProps, theme } from "antd";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState, type PropsWithChildren } from "react";
 import { Logo } from "./Logo";
 import { Settings } from "./Settings";
 import { SignOut } from "./SignOut";
 
+type Props = {
+  role: Role;
+};
+
 const { Header, Content, Sider } = Layout;
 
-const items: MenuProps["items"] = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  AppstoreOutlined,
-  TeamOutlined,
-  ShopOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
-}));
-
-export const AppLayout = ({ children }: PropsWithChildren) => {
+export const AppLayout = ({ children, role }: PropsWithChildren<Props>) => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const navItems = useNavItems({ role });
+
+  const selectedKeys = React.useMemo(() => {
+    if (pathname.includes("/") && pathname.length > 1) {
+      const pathKey = pathname.split("/")[1];
+      if (pathKey) return [`/${pathKey}`];
+    }
+    return [pathname];
+  }, [pathname]);
+
+  const onMenuClick: MenuProps["onClick"] = (e) => router.push(e.key);
 
   return (
     <Layout hasSider>
@@ -58,10 +53,11 @@ export const AppLayout = ({ children }: PropsWithChildren) => {
               <Logo />
             </div>
             <Menu
+              onClick={onMenuClick}
               className="border-r-0"
               mode="inline"
-              defaultSelectedKeys={["4"]}
-              items={items}
+              defaultSelectedKeys={selectedKeys}
+              items={navItems}
               style={{ background: colorBgContainer }}
             />
           </div>

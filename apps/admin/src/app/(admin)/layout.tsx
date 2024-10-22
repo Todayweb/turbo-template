@@ -8,8 +8,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { session } = await getCurrentSession();
+  const { session, user } = await getCurrentSession();
   if (!session) redirect(routes.signIn);
 
-  return <AppLayout>{children}</AppLayout>;
+  return <AppLayout role={user.role}>{children}</AppLayout>;
 }

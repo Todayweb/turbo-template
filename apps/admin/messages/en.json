@@ -4,7 +4,9 @@
     "backHome": "Back home"
   },
   "Navigation": {
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "home": "Home",
+    "administration": "Administration"
   },
   "Settings": {
     "label": "Settings",
