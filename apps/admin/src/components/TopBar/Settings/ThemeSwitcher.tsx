@@ -11,14 +11,16 @@ export const ThemeSwitcher = () => {
   const { setTheme, themes, theme: currentTheme } = useTheme();
 
   return (
-    <div className="flex flex-col gap-1">
-      <Typography.Text strong>{t("label")}</Typography.Text>
+    <Flex vertical gap="small">
+      <Typography.Text strong>{t("theme.label")}</Typography.Text>
 
       <Radio.Group defaultValue={currentTheme} buttonStyle="solid">
         {themes.map((theme) => {
-          let icon = <SunOutlined className="mr-2 h-4 w-4" />;
-          if (theme === "dark") icon = <MoonOutlined className="mr-2 h-4 w-4" />;
-          if (theme === "system") icon = <SettingOutlined className="mr-2 h-4 w-4" />;
+          const iconClassName = "mr-2 h-4 w-4";
+
+          let icon = <SunOutlined className={iconClassName} />;
+          if (theme === "dark") icon = <MoonOutlined className={iconClassName} />;
+          if (theme === "system") icon = <SettingOutlined className={iconClassName} />;
 
           return (
             <Radio.Button key={theme} value={theme} onClick={() => setTheme(theme)}>
@@ -30,6 +32,6 @@ export const ThemeSwitcher = () => {
           );
         })}
       </Radio.Group>
-    </div>
+    </Flex>
   );
 };

@@ -2,7 +2,7 @@
 
 import { type Locale, locales } from "@/i18n/config";
 import { createFormData } from "@/utils/form";
-import { Select, Typography } from "antd";
+import { Flex, Select, Typography } from "antd";
 import { useLocale, useTranslations } from "next-intl";
 import { useFormState } from "react-dom";
 import { localeAction } from "./localeAction";
@@ -21,9 +21,9 @@ export default function LocaleSwitcher() {
   }));
 
   return (
-    <div className="flex flex-col gap-1">
-      <Typography.Text strong>{t("label")}</Typography.Text>
+    <Flex vertical gap="small">
+      <Typography.Text strong>{t("locale.label")}</Typography.Text>
       <Select defaultValue={locale} onChange={onChange} options={options} className="w-full" />
-    </div>
+    </Flex>
   );
 }

@@ -10,9 +10,5 @@ export default async function RootLayout({
   const { session } = await getCurrentSession();
   if (!session) redirect(routes.signIn);
 
-  return (
-    <>
-      <main>{children}</main>
-    </>
-  );
+  return <main>{children}</main>;
 }

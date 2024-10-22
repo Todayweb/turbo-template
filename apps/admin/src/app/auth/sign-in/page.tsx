@@ -4,7 +4,7 @@ import { FormItem } from "@/components/FormItem";
 import { routes } from "@/config/routes";
 import { createFormData } from "@/utils/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Alert, Button, Card, Form, Input } from "antd";
+import { Alert, Button, Card, Flex, Form, Input } from "antd";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useTransition } from "react";
@@ -57,12 +57,12 @@ export default function SignIn() {
               control={control}
               name="password"
               label={
-                <div className="flex w-full items-center justify-between">
-                  {t("signIn.form.password.label")}
+                <Flex align="center" justify="space-between" className="w-full">
+                  <span>{t("signIn.form.password.label")}</span>
                   <Link href={routes.resetPassword} tabIndex={-1}>
                     {t("signIn.forgotPassword")}
                   </Link>
-                </div>
+                </Flex>
               }
               labelCol={{ className: "[&_label]:w-full [&_label]:after:m-0" }}
             >

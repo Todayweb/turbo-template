@@ -11,10 +11,8 @@ export default async function RootLayout({
   if (session) redirect(routes.home);
 
   return (
-    <>
-      <main className="mx-auto my-2 flex w-full max-w-md flex-col justify-center md:h-[calc(100vh-72px)] md:items-center">
-        {children}
-      </main>
-    </>
+    <main className="mx-auto my-2 flex w-full max-w-md flex-col justify-center md:h-[calc(100vh-72px)] md:items-center">
+      {children}
+    </main>
   );
 }
