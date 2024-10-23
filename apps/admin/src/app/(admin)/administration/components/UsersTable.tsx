@@ -1,30 +1,25 @@
 "use client";
 
-import { Table } from "antd";
+import { Table, type TableProps } from "antd";
 import { useTranslations } from "next-intl";
-import { useAdministrationContext } from "../providers/AdministrationProvider";
+import { type UserTableData, useAdministrationContext } from "../providers/AdministrationProvider";
+
+const columnKeys = ["email", "role"] as const;
 
 export default function UsersTable() {
-  const t = useTranslations("UserTable");
-  const { onRowChange, selectedRowKeys, dataSource } = useAdministrationContext();
+  const t = useTranslations("Administration");
+  const { onRowChange, selectedRowKeys, tableData } = useAdministrationContext();
 
-  const columns = [
-    {
-      title: t("email"),
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: t("role"),
-      dataIndex: "role",
-      key: "role",
-    },
-  ];
+  const columns: TableProps<UserTableData>["columns"] = columnKeys.map((key) => ({
+    title: t(`userTable.${key}`),
+    dataIndex: key,
+    key: key,
+  }));
 
   return (
     <Table
       rowSelection={{ type: "radio", onChange: onRowChange, selectedRowKeys }}
-      dataSource={dataSource}
+      dataSource={tableData}
       columns={columns}
     />
   );

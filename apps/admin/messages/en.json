@@ -72,8 +72,10 @@
       }
     }
   },
-  "UserTable": {
-    "email": "Email",
-    "role": "Role"
+  "Administration": {
+    "userTable": {
+      "email": "Email",
+      "role": "Role"
+    }
   }
 }

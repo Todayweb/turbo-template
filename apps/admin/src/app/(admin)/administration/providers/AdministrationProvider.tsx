@@ -3,8 +3,8 @@
 import type { User } from "@prisma/client";
 import { type Key, createContext, useContext, useState } from "react";
 
-type TableData = {
-  key: string;
+export type UserTableData = {
+  key: Key;
   email: string;
   role: string;
 };
@@ -16,31 +16,31 @@ interface AdministrationProviderProps {
 
 interface AdministrationContextProps {
   selectedRowKeys: Key[];
-  selectedRows: TableData[];
-  onRowChange: (selectedKeys: Key[], selectedRows: TableData[]) => void;
-  dataSource: TableData[];
+  selectedRow?: UserTableData;
+  onRowChange: (selectedKeys: Key[], selectedRows: UserTableData[]) => void;
+  tableData: UserTableData[];
 }
 
 export const AdministrationContext = createContext({} as AdministrationContextProps);
 
 export const AdministrationProvider = ({ children, data }: AdministrationProviderProps) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
-  const [selectedRows, setSelectedRows] = useState<TableData[]>([]);
+  const [selectedRow, setSelectedRow] = useState<UserTableData | undefined>();
 
-  const dataSource = data.map((user) => ({
+  const tableData = data.map((user) => ({
     key: user.id,
     email: user.email,
     role: user.role,
   }));
 
-  const onRowChange = (selectedKeys: Key[], selectedRows: TableData[]) => {
+  const onRowChange = (selectedKeys: Key[], selectedRows: UserTableData[]) => {
     setSelectedRowKeys(selectedKeys);
-    setSelectedRows(selectedRows);
+    setSelectedRow(selectedRows[0]);
   };
 
   return (
     <AdministrationContext.Provider
-      value={{ selectedRowKeys, selectedRows, onRowChange, dataSource }}
+      value={{ selectedRowKeys, selectedRow, onRowChange, tableData }}
     >
       {children}
     </AdministrationContext.Provider>
