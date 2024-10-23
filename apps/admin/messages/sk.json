@@ -1,4 +1,8 @@
 {
+  "Error": {
+    "message": "Hupss.. niečo sa pokazilo.",
+    "button": "Skúsiť znova"
+  },
   "NotFound": {
     "title": "Je nám ĺúto, ale táto stránka neexistuje...",
     "backHome": "Späť domov"

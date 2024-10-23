@@ -1,4 +1,8 @@
 {
+  "Error": {
+    "message": "Hupss.. something went wrong.",
+    "button": "Try again"
+  },
   "NotFound": {
     "title": "Sorry, the page you visited does not exist...",
     "backHome": "Back home"
