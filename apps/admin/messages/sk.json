@@ -28,7 +28,8 @@
   },
   "Form": {
     "serverError": "Hupss.. niečo sa pokazilo. Skús znova.",
-    "wrongInput": "Wrong form data input."
+    "wrongInput": "Wrong form data input.",
+    "unauthorized": "Neoprávnený prístup."
   },
   "Auth": {
     "signIn": {
@@ -76,6 +77,27 @@
     "userTable": {
       "email": "Email",
       "role": "Rola"
+    },
+    "addUser": {
+      "title": "Pridať požívateľa",
+      "form": {
+        "email": {
+          "label": "Email",
+          "palceholder": "Emailová adresa",
+          "error": "Email je povinný."
+        },
+        "role": {
+          "label": "Rola"
+        },
+        "error": {
+          "userExists": "Používateľ s týmto e-mailom už existuje."
+        }
+      }
     }
+  },
+  "ActionBar": {
+    "add": "Pridať",
+    "update": "Upraviť",
+    "delete": "Vymazať"
   }
 }

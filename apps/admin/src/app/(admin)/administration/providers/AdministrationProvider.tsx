@@ -1,7 +1,14 @@
 "use client";
 
 import type { User } from "@prisma/client";
-import { type Key, createContext, useContext, useState } from "react";
+import {
+  type Dispatch,
+  type Key,
+  type SetStateAction,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 
 export type UserTableData = {
   key: Key;
@@ -19,11 +26,14 @@ type AdministrationContextProps = {
   selectedRow?: UserTableData;
   onRowChange: (selectedKeys: Key[], selectedRows: UserTableData[]) => void;
   tableData: UserTableData[];
+  showAddUserModal: boolean;
+  setShowAddUserModal: Dispatch<SetStateAction<boolean>>;
 };
 
 export const AdministrationContext = createContext({} as AdministrationContextProps);
 
 export const AdministrationProvider = ({ children, data }: AdministrationProviderProps) => {
+  const [showAddUserModal, setShowAddUserModal] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
   const [selectedRow, setSelectedRow] = useState<UserTableData | undefined>();
 
@@ -40,7 +50,14 @@ export const AdministrationProvider = ({ children, data }: AdministrationProvide
 
   return (
     <AdministrationContext.Provider
-      value={{ selectedRowKeys, selectedRow, onRowChange, tableData }}
+      value={{
+        selectedRowKeys,
+        selectedRow,
+        onRowChange,
+        tableData,
+        showAddUserModal,
+        setShowAddUserModal,
+      }}
     >
       {children}
     </AdministrationContext.Provider>

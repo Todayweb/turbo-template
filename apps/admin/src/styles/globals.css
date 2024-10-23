@@ -6,13 +6,13 @@
 
 @layer base {
   :root {
-    --primary: 39.5 33.3% 53.5%;
+    --primary: 216 94% 69%;
     --error: 0 84.2% 60.2%;
     --success: 125 84% 35%;
   }
 
   .dark {
-    --primary: 39.5 33.3% 53.5%;
+    --primary: 216 94% 69%;
     --error: 0 84.2% 60.2%;
     --success: 125 84% 35%;
   }

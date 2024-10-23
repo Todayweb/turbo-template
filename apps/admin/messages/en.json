@@ -28,7 +28,8 @@
   },
   "Form": {
     "serverError": "Hupss.. something went wrong. Try again.",
-    "wrongInput": "Wrong form data input."
+    "wrongInput": "Wrong form data input.",
+    "unauthorized": "Unauthorized."
   },
   "Auth": {
     "signIn": {
@@ -76,6 +77,27 @@
     "userTable": {
       "email": "Email",
       "role": "Role"
+    },
+    "addUser": {
+      "title": "Add user",
+      "form": {
+        "email": {
+          "label": "Email",
+          "palceholder": "Email address",
+          "error": "Email is required."
+        },
+        "role": {
+          "label": "Role"
+        },
+        "error": {
+          "userExists": "User with this e-mail already exists."
+        }
+      }
     }
+  },
+  "ActionBar": {
+    "add": "Add",
+    "update": "Update",
+    "delete": "Delete"
   }
 }

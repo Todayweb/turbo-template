@@ -1,5 +1,7 @@
 import { prisma } from "@repo/db";
-import UsersTable from "./components/UsersTable";
+import { AddUserModal } from "./components/AddUserModal";
+import { UserActionBar } from "./components/UserActionBar";
+import { UsersTable } from "./components/UsersTable";
 import { AdministrationProvider } from "./providers/AdministrationProvider";
 
 export default async function Administration() {
@@ -13,6 +15,8 @@ export default async function Administration() {
 
   return (
     <AdministrationProvider data={users}>
+      <UserActionBar />
+      <AddUserModal />
       <UsersTable />
     </AdministrationProvider>
   );

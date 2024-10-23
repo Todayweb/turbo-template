@@ -27,5 +27,5 @@ model Session {
 enum Role {
   admin
   editor
-  banned
+  noAccess
 }

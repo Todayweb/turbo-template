@@ -6,7 +6,7 @@ import { type UserTableData, useAdministrationContext } from "../providers/Admin
 
 const columnKeys = ["email", "role"] as const;
 
-export default function UsersTable() {
+export const UsersTable = () => {
   const t = useTranslations("Administration");
   const { onRowChange, selectedRowKeys, tableData } = useAdministrationContext();
 
@@ -23,4 +23,4 @@ export default function UsersTable() {
       columns={columns}
     />
   );
-}
+};

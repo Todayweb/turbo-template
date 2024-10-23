@@ -41,7 +41,7 @@ export const FormItem = <TFieldValues extends FieldValues = FieldValues>({
       name={name}
       initialValue={field.value}
       validateStatus={fieldState.invalid ? "error" : undefined}
-      help={<div className="mb-2">{helpText}</div>}
+      help={<div className="mb-2 mt-1">{helpText}</div>}
       labelCol={{
         ...labelCol,
         className: cn("[&_label]:h-0 pb-1", labelCol?.className),

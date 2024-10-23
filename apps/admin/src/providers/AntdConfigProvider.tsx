@@ -3,12 +3,16 @@
 import { StyleProvider } from "@ant-design/cssinjs";
 import { App, ConfigProvider, theme as antdTheme } from "antd";
 import type { ThemeConfig } from "antd";
+import enUS from "antd/locale/en_US";
+import sk_SK from "antd/locale/sk_SK";
+import { useLocale } from "next-intl";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
 
 export const AntdConfigProvider = ({ children }: React.PropsWithChildren) => {
   const [rendered, setRendered] = useState(false);
   const { resolvedTheme } = useTheme();
+  const locale = useLocale();
 
   useEffect(() => {
     setRendered(true);
@@ -19,8 +23,7 @@ export const AntdConfigProvider = ({ children }: React.PropsWithChildren) => {
       algorithm: resolvedTheme === "dark" ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
       token: {
         fontFamily: "inherit",
-        colorPrimary: "#b09561",
-        colorInfo: "#b09561",
+        colorPrimary: "#64A0FA",
         fontSizeLG: 14,
       },
       components: {
@@ -35,7 +38,11 @@ export const AntdConfigProvider = ({ children }: React.PropsWithChildren) => {
   if (!rendered) return null;
 
   return (
-    <ConfigProvider theme={configTheme} componentSize="large">
+    <ConfigProvider
+      locale={locale === "sk" ? sk_SK : enUS}
+      theme={configTheme}
+      componentSize="large"
+    >
       <StyleProvider layer>
         <App>{children}</App>
       </StyleProvider>
