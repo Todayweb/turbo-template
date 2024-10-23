@@ -11,7 +11,7 @@ import { AppMenu } from "./AppMenu";
 const { Sider } = Layout;
 
 export const AppSider = () => {
-  const { collapsed, menuItems, backgroundColor } = useAppLayoutContext();
+  const { collapsed, backgroundColor } = useAppLayoutContext();
 
   return (
     <Sider
@@ -26,7 +26,7 @@ export const AppSider = () => {
           <div className="w-full my-5 flex justify-center">
             <Logo />
           </div>
-          <AppMenu menuItems={menuItems} />
+          <AppMenu />
         </div>
 
         <div className="flex gap-2 items-center justify-between m-4 flex-col">

@@ -3,12 +3,11 @@
 import { Menu, type MenuProps, theme } from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import { useAppLayoutContext } from "..";
 
-type Props = {
-  menuItems: MenuProps["items"];
-};
+export const AppMenu = () => {
+  const { menuItems } = useAppLayoutContext();
 
-export const AppMenu = ({ menuItems }: Props) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -32,6 +31,7 @@ export const AppMenu = ({ menuItems }: Props) => {
       className="border-r-0"
       mode="inline"
       defaultSelectedKeys={selectedKeys}
+      selectedKeys={selectedKeys}
       items={menuItems}
       style={{ background: colorBgContainer }}
     />
