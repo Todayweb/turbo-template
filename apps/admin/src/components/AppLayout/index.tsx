@@ -1,6 +1,6 @@
 "use client";
 
-import { useNavItems } from "@/hooks/useNavItems";
+import { useAdminNavigationItems } from "@/hooks/useAdminNavigationItems";
 import type { Role } from "@prisma/client";
 import { Layout, type MenuProps, theme } from "antd";
 import { type Dispatch, type SetStateAction, createContext, useContext, useState } from "react";
@@ -8,23 +8,23 @@ import { AppContent } from "./components/AppContent";
 import { AppHeader } from "./components/AppHeader";
 import { AppSider } from "./components/AppSider";
 
-interface AppLayoutProviderProps {
+type AppLayoutProviderProps = {
   children: React.ReactNode;
   role: Role;
-}
+};
 
-interface AppLayoutContextProps {
+type AppLayoutContextProps = {
   collapsed: boolean;
   setCollapsed: Dispatch<SetStateAction<boolean>>;
   menuItems: MenuProps["items"];
   backgroundColor: string;
-}
+};
 
 export const AppLayoutContext = createContext({} as AppLayoutContextProps);
 
 export const AppLayout = ({ children, role }: AppLayoutProviderProps) => {
   const [collapsed, setCollapsed] = useState(false);
-  const menuItems = useNavItems({ role });
+  const menuItems = useAdminNavigationItems({ role });
 
   const {
     token: { colorBgContainer: backgroundColor },

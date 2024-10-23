@@ -1,7 +1,7 @@
 "use client";
 
 import { type Locale, locales } from "@/i18n/config";
-import { createFormData } from "@/utils/form";
+import { createFormData } from "@/utils/createFormData";
 import { Flex, Select, Typography } from "antd";
 import { useLocale, useTranslations } from "next-intl";
 import { useFormState } from "react-dom";

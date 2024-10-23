@@ -3,14 +3,14 @@
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { createContext, useContext, useState } from "react";
 
-interface SettingsDrawerProviderProps {
+type SettingsDrawerProviderProps = {
   children: ReactNode;
-}
+};
 
-interface SettingsDrawerContextProps {
+type SettingsDrawerContextProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-}
+};
 
 export const SettingsDrawerContext = createContext({} as SettingsDrawerContextProps);
 

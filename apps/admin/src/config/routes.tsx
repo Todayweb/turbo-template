@@ -1,5 +1,5 @@
 import { HomeOutlined, SafetyOutlined } from "@ant-design/icons";
-import type { Role } from "@prisma/client";
+import { Role } from "@prisma/client";
 
 export const routes = {
   home: "/",
@@ -9,21 +9,31 @@ export const routes = {
   resetPasswordCallback: "/auth/reset-password/callback",
 } as const;
 
-type NavigationRoute = keyof Pick<typeof routes, "home" | "administration">;
+export const adminRoutes: Array<keyof Pick<typeof routes, "home" | "administration">> = [
+  "home",
+  "administration",
+] as const;
 
-export const navigationRoutes: {
-  route: NavigationRoute;
+export type AdminRoute = (typeof adminRoutes)[number];
+
+export const adminRoutesPermissions: Record<AdminRoute, Role[]> = {
+  home: [],
+  administration: [Role.admin],
+};
+
+export const adminNavigationItems: {
+  route: AdminRoute;
   permissions: Role[];
   icon: JSX.Element;
 }[] = [
   {
     route: "home",
     icon: <HomeOutlined />,
-    permissions: [],
+    permissions: adminRoutesPermissions.home,
   },
   {
     route: "administration",
     icon: <SafetyOutlined />,
-    permissions: ["admin"],
+    permissions: adminRoutesPermissions.administration,
   },
 ];

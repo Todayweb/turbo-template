@@ -1,5 +1,6 @@
 "use client";
 
+import { getPathKey } from "@/utils/getPathKey";
 import { Menu, type MenuProps, theme } from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -16,9 +17,10 @@ export const AppMenu = () => {
   } = theme.useToken();
 
   const selectedKeys = React.useMemo(() => {
-    if (pathname.includes("/") && pathname.length > 1) {
-      const pathKey = pathname.split("/")[1];
-      if (pathKey) return [`/${pathKey}`];
+    const pathKey = getPathKey(pathname);
+    if (pathKey) {
+      if (!pathKey?.length || pathKey === "home") return ["/"];
+      return [`/${pathKey}`];
     }
     return [pathname];
   }, [pathname]);

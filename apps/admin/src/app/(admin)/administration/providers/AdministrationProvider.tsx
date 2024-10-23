@@ -9,17 +9,17 @@ export type UserTableData = {
   role: string;
 };
 
-interface AdministrationProviderProps {
+type AdministrationProviderProps = {
   children: React.ReactNode;
   data: Omit<User, "password">[];
-}
+};
 
-interface AdministrationContextProps {
+type AdministrationContextProps = {
   selectedRowKeys: Key[];
   selectedRow?: UserTableData;
   onRowChange: (selectedKeys: Key[], selectedRows: UserTableData[]) => void;
   tableData: UserTableData[];
-}
+};
 
 export const AdministrationContext = createContext({} as AdministrationContextProps);
 
