@@ -10,7 +10,7 @@ export default function UsersTable() {
 
   const columns = [
     {
-      title: t("title"),
+      title: t("email"),
       dataIndex: "email",
       key: "email",
     },
