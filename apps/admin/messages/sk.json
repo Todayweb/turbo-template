@@ -71,5 +71,9 @@
         }
       }
     }
+  },
+  "UserTable": {
+    "email": "Email",
+    "role": "Rola"
   }
 }
