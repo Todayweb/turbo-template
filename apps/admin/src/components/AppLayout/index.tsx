@@ -46,7 +46,7 @@ export const AppLayout = ({ children, role }: AppLayoutProviderProps) => {
 export const useAppLayoutContext = () => {
   const context = useContext(AppLayoutContext);
   if (!context) {
-    throw new Error("useTranslation must be used within a TranslationProvider");
+    throw new Error("useAppLayoutContext must be used within a AppLayout");
   }
   return context;
 };
