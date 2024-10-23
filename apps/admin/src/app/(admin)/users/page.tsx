@@ -1,3 +1,4 @@
+import UsersTable from "@/components/UsersTable";
 import { routes } from "@/config/routes";
 import { getCurrentSession } from "@/utils/auth";
 import { prisma } from "@repo/db";
@@ -15,5 +16,24 @@ export default async function Users() {
     },
   });
 
-  return <div>{JSON.stringify(users)}</div>;
+  const dataSource = users.map((user) => ({
+    key: user.id,
+    email: user.email,
+    role: user.role,
+  }));
+
+  const columns = [
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
+    },
+  ];
+
+  return <UsersTable dataSource={dataSource} columns={columns} />;
 }
