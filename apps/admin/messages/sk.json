@@ -1,10 +1,16 @@
 {
+  "Error": {
+    "message": "Hupss.. niečo sa pokazilo.",
+    "button": "Skúsiť znova"
+  },
   "NotFound": {
     "title": "Je nám ĺúto, ale táto stránka neexistuje...",
     "backHome": "Späť domov"
   },
   "Navigation": {
-    "signOut": "Odhlásiť"
+    "signOut": "Odhlásiť",
+    "home": "Domov",
+    "administration": "Administrácia"
   },
   "Settings": {
     "label": "Nastavenia",
