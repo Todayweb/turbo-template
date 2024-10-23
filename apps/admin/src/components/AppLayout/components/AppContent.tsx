@@ -11,8 +11,8 @@ export const AppContent = ({ children }: PropsWithChildren) => {
   } = theme.useToken();
 
   return (
-    <Content className="my-6 mx-4">
-      <div className="p-6 rounded-md" style={{ background: colorBgContainer }}>
+    <Content className="m-4 flex flex-col">
+      <div className="p-6 rounded-md flex-grow" style={{ background: colorBgContainer }}>
         {children}
       </div>
     </Content>

@@ -3,7 +3,7 @@ import type { Role } from "@prisma/client";
 import { useTranslations } from "next-intl";
 
 type Props = {
-  role: Role;
+  role?: Role;
   skipHome?: boolean;
 };
 
@@ -15,6 +15,8 @@ export const useNavItems = ({ role, skipHome }: Props) => {
     label: t(route),
     ...rest,
   }));
+
+  if (!role) return [];
 
   return navItems.filter(({ key, permissions }) => {
     if (skipHome && key === routes.home) return false;

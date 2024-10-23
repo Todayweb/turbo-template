@@ -23,7 +23,7 @@ export const AppSider = () => {
     >
       <div className="flex justify-between flex-col h-full">
         <div>
-          <div className="w-full my-4 flex justify-center">
+          <div className="w-full my-5 flex justify-center">
             <Logo />
           </div>
           <AppMenu menuItems={menuItems} />

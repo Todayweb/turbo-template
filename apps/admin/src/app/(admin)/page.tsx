@@ -1,3 +1,15 @@
+import { Logo } from "@/components/Logo";
+
+import { getCurrentSession } from "@/utils/auth";
+import { HomeNavigation } from "./components/HomeNavigation";
+
 export default async function Home() {
-  return <div>Home Page</div>;
+  const { user } = await getCurrentSession();
+
+  return (
+    <div className="flex justify-center items-center flex-col gap-4">
+      <Logo size="large" />
+      <HomeNavigation role={user?.role} />
+    </div>
+  );
 }
