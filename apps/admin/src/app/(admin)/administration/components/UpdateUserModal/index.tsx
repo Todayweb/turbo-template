@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 import { updateUserAction } from "./updateUserAction";
-import { type FormValues, defaultValues, useSchema } from "./updateUserConfig";
+import { type FormValues, defaultValues, schema } from "./updateUserConfig";
 
 const roleOptions: { value: Role; label: string }[] = [
   { value: "admin", label: "Admin" },
@@ -23,15 +23,13 @@ export const UpdateUserModal = () => {
   const { showUpdateUserModal, setShowUpdateUserModal, selectedRow, resetSelectedRows } =
     useAdministrationContext();
 
-  const schema = useSchema();
-
   const {
     control,
     handleSubmit,
     reset: resetForm,
   } = useForm<FormValues>({
     defaultValues,
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema(useTranslations())),
   });
 
   useEffect(() => {

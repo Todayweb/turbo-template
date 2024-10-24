@@ -3,22 +3,16 @@
 import { routes } from "@/config/routes";
 import { generateRandomString } from "@/utils/generateRandomString";
 import { adminProcedure, handleServerError } from "@/utils/zsa";
-import { Role } from "@prisma/client";
 import { prisma } from "@repo/db";
 import * as argon2 from "argon2";
 import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
 import { ZSAError } from "zsa";
+import { schema } from "./addUserConfig";
 
 export const addUserAction = adminProcedure
   .createServerAction()
-  .input(
-    z.object({
-      email: z.string().email(),
-      role: z.nativeEnum(Role),
-    }),
-  )
+  .input(async () => schema(await getTranslations()))
   .onSuccess(async () => {
     revalidatePath(routes.administration);
   })

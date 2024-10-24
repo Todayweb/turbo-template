@@ -8,13 +8,13 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { ZSAError } from "zsa";
 
+const schema = z.object({
+  id: z.string(),
+});
+
 export const deleteUserAction = adminProcedure
   .createServerAction()
-  .input(
-    z.object({
-      id: z.string(),
-    }),
-  )
+  .input(schema)
   .onSuccess(async () => {
     revalidatePath(routes.administration);
   })

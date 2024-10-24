@@ -1,15 +1,23 @@
 "use server";
 
+import { locales } from "@/i18n/config";
 import { setUserLocale } from "@/utils/locale";
-import { localeSchema } from "./localeSchema";
+import { handleServerError, publicProcedure } from "@/utils/zsa";
+import { z } from "zod";
 
-export async function localeAction(prevState: unknown, data: FormData) {
-  const formData = Object.fromEntries(data);
-  const parsed = localeSchema.safeParse(formData);
+const schema = z.object({
+  locale: z.enum(locales),
+});
 
-  if (!parsed.success) return { error: "Wrong form data input." };
+export const localeAction = publicProcedure
+  .createServerAction()
+  .input(schema)
+  .handler(async ({ input }) => {
+    const { locale } = input;
 
-  const { locale } = parsed.data;
-
-  await setUserLocale(locale);
-}
+    try {
+      await setUserLocale(locale);
+    } catch (error) {
+      await handleServerError(error);
+    }
+  });

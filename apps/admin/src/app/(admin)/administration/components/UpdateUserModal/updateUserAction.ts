@@ -2,20 +2,14 @@
 
 import { routes } from "@/config/routes";
 import { adminProcedure, handleServerError } from "@/utils/zsa";
-import { Role } from "@prisma/client";
 import { prisma } from "@repo/db";
+import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
+import { schema } from "./updateUserConfig";
 
 export const updateUserAction = adminProcedure
   .createServerAction()
-  .input(
-    z.object({
-      id: z.string(),
-      email: z.string().email(),
-      role: z.nativeEnum(Role),
-    }),
-  )
+  .input(async () => schema(await getTranslations()))
   .onSuccess(async () => {
     revalidatePath(routes.administration);
   })

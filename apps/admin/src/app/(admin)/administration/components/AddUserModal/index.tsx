@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 import { addUserAction } from "./addUserAction";
-import { type FormValues, defaultValues, useSchema } from "./addUserConfig";
+import { type FormValues, defaultValues, schema } from "./addUserConfig";
 
 const roleOptions: { value: Role; label: string }[] = [
   { value: "admin", label: "Admin" },
@@ -21,15 +21,13 @@ export const AddUserModal = () => {
   const t = useTranslations("Administration");
   const { showAddUserModal, setShowAddUserModal } = useAdministrationContext();
 
-  const schema = useSchema();
-
   const {
     control,
     handleSubmit,
     reset: resetForm,
   } = useForm<FormValues>({
     defaultValues,
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema(useTranslations())),
   });
 
   const onModalClose = () => {

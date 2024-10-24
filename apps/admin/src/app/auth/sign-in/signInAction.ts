@@ -7,17 +7,12 @@ import { prisma } from "@repo/db";
 import * as argon2 from "argon2";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
-import { z } from "zod";
 import { ZSAError } from "zsa";
+import { schema } from "./signInConfig";
 
 export const signInAction = publicProcedure
   .createServerAction()
-  .input(
-    z.object({
-      email: z.string().email(),
-      password: z.string().min(1),
-    }),
-  )
+  .input(async () => schema(await getTranslations()))
   .onSuccess(async () => {
     redirect(routes.home);
   })

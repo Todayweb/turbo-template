@@ -11,16 +11,14 @@ import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
 import { AuthContainer, AuthHeading } from "../components";
 import { signInAction } from "./signInAction";
-import { type FormValues, defaultValues, useSchema } from "./signInConfig";
+import { FormValues, defaultValues, schema } from "./signInConfig";
 
 export default function SignIn() {
   const t = useTranslations("Auth");
 
-  const schema = useSchema();
-
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues,
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema(useTranslations())),
   });
 
   const { isPending, execute, error } = useServerAction(signInAction);

@@ -27,6 +27,9 @@
       "correctness": {
         "useExhaustiveDependencies": "off"
       },
+      "style": {
+        "useImportType": "off"
+      },
       "nursery": {
         "useSortedClasses": {
           "options": {
