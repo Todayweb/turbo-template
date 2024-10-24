@@ -2,8 +2,8 @@
 
 import { Divider, Drawer } from "antd";
 import { useTranslations } from "next-intl";
+import { useSettingsDrawerContext } from "../providers/SettingsDrawerProvider";
 import LocaleSwitcher from "./LocaleSwitcher";
-import { useSettingsDrawerContext } from "./SettingsDrawerProvider";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const SettingsDrawer = () => {
