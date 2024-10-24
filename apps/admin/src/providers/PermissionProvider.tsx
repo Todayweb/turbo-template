@@ -12,17 +12,17 @@ type PermissionProviderProps = {
   role: Role;
 };
 
-export const PermissionContext = createContext({});
+export const PermissionContext = createContext(null);
 
 export const PermissionProvider = ({ children, role }: PermissionProviderProps) => {
   const pathName = usePathname();
   const pathKey = getPathKey(pathName) as AdminRoute;
 
-  if (role === "banned") notFound();
+  if (role === "noAccess") notFound();
   if (!adminRoutes.includes(pathKey)) notFound();
   if (!userHasPermissions({ permissions: adminRoutesPermissions[pathKey], role })) notFound();
 
-  return <PermissionContext.Provider value={{}}>{children}</PermissionContext.Provider>;
+  return <PermissionContext.Provider value={null}>{children}</PermissionContext.Provider>;
 };
 
 export const usePermissionContext = () => {

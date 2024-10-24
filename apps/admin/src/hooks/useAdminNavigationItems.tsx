@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 
 type Props = {
-  role?: Role;
+  role: Role;
   skipHome?: boolean;
 };
 
@@ -17,8 +17,6 @@ export const useAdminNavigationItems = ({ role, skipHome }: Props) => {
     label: t(route),
     ...rest,
   }));
-
-  if (!role) return [];
 
   return useMemo(
     () =>

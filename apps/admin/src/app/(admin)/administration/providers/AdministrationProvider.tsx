@@ -11,7 +11,7 @@ import {
 } from "react";
 
 export type UserTableData = {
-  key: Key;
+  key: string;
   email: string;
   role: string;
 };
@@ -19,21 +19,27 @@ export type UserTableData = {
 type AdministrationProviderProps = {
   children: React.ReactNode;
   data: Omit<User, "password">[];
+  userId: string;
 };
 
 type AdministrationContextProps = {
+  userId: string;
   selectedRowKeys: Key[];
   selectedRow?: UserTableData;
   onRowChange: (selectedKeys: Key[], selectedRows: UserTableData[]) => void;
   tableData: UserTableData[];
+  resetSelectedRows: VoidFunction;
   showAddUserModal: boolean;
   setShowAddUserModal: Dispatch<SetStateAction<boolean>>;
+  showDeleteUserModal: boolean;
+  setShowDeleteUserModal: Dispatch<SetStateAction<boolean>>;
 };
 
-export const AdministrationContext = createContext({} as AdministrationContextProps);
+const AdministrationContext = createContext<AdministrationContextProps | null>(null);
 
-export const AdministrationProvider = ({ children, data }: AdministrationProviderProps) => {
+export const AdministrationProvider = ({ children, data, userId }: AdministrationProviderProps) => {
   const [showAddUserModal, setShowAddUserModal] = useState(false);
+  const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
   const [selectedRow, setSelectedRow] = useState<UserTableData | undefined>();
 
@@ -48,15 +54,24 @@ export const AdministrationProvider = ({ children, data }: AdministrationProvide
     setSelectedRow(selectedRows[0]);
   };
 
+  const resetSelectedRows = () => {
+    setSelectedRowKeys([]);
+    setSelectedRow(undefined);
+  };
+
   return (
     <AdministrationContext.Provider
       value={{
+        userId,
         selectedRowKeys,
         selectedRow,
         onRowChange,
         tableData,
         showAddUserModal,
         setShowAddUserModal,
+        showDeleteUserModal,
+        setShowDeleteUserModal,
+        resetSelectedRows,
       }}
     >
       {children}

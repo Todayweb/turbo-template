@@ -20,7 +20,7 @@ type AppLayoutContextProps = {
   backgroundColor: string;
 };
 
-export const AppLayoutContext = createContext({} as AppLayoutContextProps);
+const AppLayoutContext = createContext<AppLayoutContextProps | null>(null);
 
 export const AppLayout = ({ children, role }: AppLayoutProviderProps) => {
   const [collapsed, setCollapsed] = useState(false);

@@ -6,7 +6,7 @@ import { Button } from "antd";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  role?: Role;
+  role: Role;
 };
 
 export const HomeNavigation = ({ role }: Props) => {

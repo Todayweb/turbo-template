@@ -93,6 +93,11 @@
           "userExists": "Používateľ s týmto e-mailom už existuje."
         }
       }
+    },
+    "deleteUser": {
+      "title": "Vymazať používateľa",
+      "body": "Určite chceš vymazať používateľa {email}?",
+      "selfDeletionMessage": "Nemôžeš vymazať sám seba."
     }
   },
   "ActionBar": {

@@ -11,7 +11,7 @@ import React from "react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 
 export const UserActionBar = () => {
-  const { selectedRow, setShowAddUserModal } = useAdministrationContext();
+  const { selectedRow, setShowAddUserModal, setShowDeleteUserModal } = useAdministrationContext();
 
   return (
     <ActionBar>
@@ -21,7 +21,7 @@ export const UserActionBar = () => {
       </ActionItems>
 
       <ActionItems>
-        <ActionDeleteButton disabled={!selectedRow} />
+        <ActionDeleteButton disabled={!selectedRow} onClick={() => setShowDeleteUserModal(true)} />
       </ActionItems>
     </ActionBar>
   );

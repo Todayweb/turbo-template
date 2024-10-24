@@ -12,7 +12,7 @@ type SettingsDrawerContextProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export const SettingsDrawerContext = createContext({} as SettingsDrawerContextProps);
+const SettingsDrawerContext = createContext<SettingsDrawerContextProps | null>(null);
 
 export const SettingsDrawerProvider = ({ children }: SettingsDrawerProviderProps) => {
   const [open, setOpen] = useState(false);

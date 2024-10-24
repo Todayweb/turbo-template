@@ -93,6 +93,11 @@
           "userExists": "User with this e-mail already exists."
         }
       }
+    },
+    "deleteUser": {
+      "title": "Delete user",
+      "body": "Are you sure you want to delete user {email}?",
+      "selfDeletionMessage": "You can't delete yourself."
     }
   },
   "ActionBar": {

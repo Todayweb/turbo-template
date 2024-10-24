@@ -4,9 +4,8 @@ import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/enco
 import type { Session, User } from "@prisma/client";
 import { prisma } from "@repo/db";
 
-export type SessionValidationResult =
-  | { session: Session; user: User }
-  | { session: null; user: null };
+export type SessionOptional = { session: Session; user: User } | { session: null; user: null };
+export type SessionEnsured = { session: Session; user: User };
 
 export function generateSessionToken(): string {
   const bytes = new Uint8Array(20);
@@ -28,7 +27,7 @@ export async function createSession(token: string, userId: string): Promise<Sess
   return session;
 }
 
-export async function validateSessionToken(token: string): Promise<SessionValidationResult> {
+export async function validateSessionToken(token: string): Promise<SessionOptional> {
   const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
   const result = await prisma.session.findUnique({
     where: {
@@ -38,14 +37,17 @@ export async function validateSessionToken(token: string): Promise<SessionValida
       user: true,
     },
   });
+
   if (result === null) {
     return { session: null, user: null };
   }
+
   const { user, ...session } = result;
   if (Date.now() >= session.expiresAt.getTime()) {
     await prisma.session.delete({ where: { id: sessionId } });
     return { session: null, user: null };
   }
+
   if (Date.now() >= session.expiresAt.getTime() - 1000 * 60 * 60 * 24 * 15) {
     session.expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
     await prisma.session.update({
@@ -57,6 +59,7 @@ export async function validateSessionToken(token: string): Promise<SessionValida
       },
     });
   }
+
   return { session, user };
 }
 

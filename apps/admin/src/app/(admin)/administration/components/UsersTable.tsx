@@ -8,7 +8,7 @@ const columnKeys = ["email", "role"] as const;
 
 export const UsersTable = () => {
   const t = useTranslations("Administration");
-  const { onRowChange, selectedRowKeys, tableData } = useAdministrationContext();
+  const { onRowChange, selectedRowKeys, tableData, userId } = useAdministrationContext();
 
   const columns: TableProps<UserTableData>["columns"] = columnKeys.map((key) => ({
     title: t(`userTable.${key}`),
@@ -18,7 +18,14 @@ export const UsersTable = () => {
 
   return (
     <Table
-      rowSelection={{ type: "radio", onChange: onRowChange, selectedRowKeys }}
+      rowSelection={{
+        type: "radio",
+        onChange: onRowChange,
+        selectedRowKeys,
+        getCheckboxProps: (record: UserTableData) => ({
+          disabled: record.key === userId,
+        }),
+      }}
       dataSource={tableData}
       columns={columns}
     />
