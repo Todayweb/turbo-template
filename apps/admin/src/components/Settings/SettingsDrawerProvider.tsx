@@ -3,22 +3,27 @@
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { createContext, useContext, useState } from "react";
 
-type SettingsDrawerProviderProps = {
+export type SettingsDrawerProviderProps = {
   children: ReactNode;
+  triggerIconOnly?: boolean;
 };
 
 type SettingsDrawerContextProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  triggerIconOnly?: boolean;
 };
 
 const SettingsDrawerContext = createContext<SettingsDrawerContextProps | null>(null);
 
-export const SettingsDrawerProvider = ({ children }: SettingsDrawerProviderProps) => {
+export const SettingsDrawerProvider = ({
+  children,
+  triggerIconOnly,
+}: SettingsDrawerProviderProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <SettingsDrawerContext.Provider value={{ open, setOpen }}>
+    <SettingsDrawerContext.Provider value={{ open, setOpen, triggerIconOnly }}>
       {children}
     </SettingsDrawerContext.Provider>
   );

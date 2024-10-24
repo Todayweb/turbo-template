@@ -78,21 +78,27 @@
       "email": "Email",
       "role": "Role"
     },
-    "addUser": {
-      "title": "Add user",
-      "form": {
-        "email": {
-          "label": "Email",
-          "palceholder": "Email address",
-          "error": "Email is required."
-        },
-        "role": {
-          "label": "Role"
-        },
+    "form": {
+      "email": {
+        "label": "Email",
+        "palceholder": "Email address",
         "error": {
-          "userExists": "User with this e-mail already exists."
+          "required": "Email is required.",
+          "format": "Email has bad format."
         }
+      },
+      "role": {
+        "label": "Role"
+      },
+      "error": {
+        "userExists": "User with this e-mail already exists."
       }
+    },
+    "addUser": {
+      "title": "Add user"
+    },
+    "updateUser": {
+      "title": "Update user"
     },
     "deleteUser": {
       "title": "Delete user",

@@ -28,8 +28,7 @@ export const addUserAction = adminProcedure
 
     try {
       const userExists = await prisma.user.findUnique({ where: { email } });
-      if (userExists)
-        throw new ZSAError("CONFLICT", tAdministration("addUser.form.error.userExists"));
+      if (userExists) throw new ZSAError("CONFLICT", tAdministration("form.error.userExists"));
 
       const generatedPassword = generateRandomString(10);
       const password = await argon2.hash(generatedPassword);

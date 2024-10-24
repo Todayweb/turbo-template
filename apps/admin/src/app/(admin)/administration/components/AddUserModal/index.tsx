@@ -60,11 +60,11 @@ export const AddUserModal = () => {
       maskClosable={false}
     >
       <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-        <FormItem required control={control} name="email" label={t("addUser.form.email.label")}>
-          <Input type="email" placeholder={t("addUser.form.email.palceholder")} autoFocus />
+        <FormItem required control={control} name="email" label={t("form.email.label")}>
+          <Input type="email" placeholder={t("form.email.palceholder")} autoFocus />
         </FormItem>
 
-        <FormItem required control={control} name="role" label={t("addUser.form.role.label")}>
+        <FormItem required control={control} name="role" label={t("form.role.label")}>
           <Select options={roleOptions} />
         </FormItem>
 

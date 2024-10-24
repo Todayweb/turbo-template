@@ -11,7 +11,7 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
       <header className="fixed top-0 left-0 flex w-full items-center justify-between px-6 py-4">
         <Logo />
         <div>
-          <Settings />
+          <Settings triggerIconOnly />
         </div>
       </header>
 

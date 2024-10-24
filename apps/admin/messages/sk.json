@@ -78,21 +78,27 @@
       "email": "Email",
       "role": "Rola"
     },
-    "addUser": {
-      "title": "Pridať požívateľa",
-      "form": {
-        "email": {
-          "label": "Email",
-          "palceholder": "Emailová adresa",
-          "error": "Email je povinný."
-        },
-        "role": {
-          "label": "Rola"
-        },
+    "form": {
+      "email": {
+        "label": "Email",
+        "palceholder": "Emailová adresa",
         "error": {
-          "userExists": "Používateľ s týmto e-mailom už existuje."
+          "required": "Email je povinný.",
+          "format": "Email ma zlý formát."
         }
+      },
+      "role": {
+        "label": "Rola"
+      },
+      "error": {
+        "userExists": "Používateľ s týmto e-mailom už existuje."
       }
+    },
+    "addUser": {
+      "title": "Pridať požívateľa"
+    },
+    "updateUser": {
+      "title": "Upraviť požívateľa"
     },
     "deleteUser": {
       "title": "Vymazať používateľa",

@@ -60,7 +60,7 @@ export const UpdateUserModal = () => {
 
   return (
     <Modal
-      title={t("addUser.title")}
+      title={t("updateUser.title")}
       open={showUpdateUserModal}
       onOk={handleSubmit(onSubmit)}
       confirmLoading={isPending}
@@ -69,11 +69,11 @@ export const UpdateUserModal = () => {
       maskClosable={false}
     >
       <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-        <FormItem required control={control} name="email" label={t("addUser.form.email.label")}>
-          <Input type="email" placeholder={t("addUser.form.email.palceholder")} autoFocus />
+        <FormItem required control={control} name="email" label={t("form.email.label")}>
+          <Input type="email" placeholder={t("form.email.palceholder")} autoFocus />
         </FormItem>
 
-        <FormItem required control={control} name="role" label={t("addUser.form.role.label")}>
+        <FormItem required control={control} name="role" label={t("form.role.label")}>
           <Select options={roleOptions} />
         </FormItem>
 

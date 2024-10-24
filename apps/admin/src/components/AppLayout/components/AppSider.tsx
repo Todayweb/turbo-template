@@ -31,8 +31,8 @@ export const AppSider = () => {
         </div>
 
         <div className="m-4 flex flex-col items-center justify-between gap-2">
-          <Settings iconOnly={collapsed} />
-          <SignOut iconOnly={collapsed} />
+          <Settings />
+          <SignOut />
         </div>
       </div>
     </Sider>

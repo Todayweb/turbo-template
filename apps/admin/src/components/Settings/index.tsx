@@ -1,15 +1,15 @@
 import { SettingsDrawer } from "./SettingsDrawer";
-import { SettingsDrawerProvider } from "./SettingsDrawerProvider";
+import { SettingsDrawerProvider, type SettingsDrawerProviderProps } from "./SettingsDrawerProvider";
 import { TriggerButton } from "./TriggerButton";
 
 export type SettingsProps = {
-  iconOnly?: boolean;
+  triggerIconOnly?: SettingsDrawerProviderProps["triggerIconOnly"];
 };
 
-export const Settings = ({ iconOnly }: SettingsProps) => {
+export const Settings = ({ triggerIconOnly }: SettingsProps) => {
   return (
-    <SettingsDrawerProvider>
-      <TriggerButton iconOnly={iconOnly} />
+    <SettingsDrawerProvider triggerIconOnly={triggerIconOnly}>
+      <TriggerButton />
       <SettingsDrawer />
     </SettingsDrawerProvider>
   );

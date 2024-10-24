@@ -8,7 +8,7 @@ export const useSchema = () => {
   const t = useTranslations("Administration");
 
   return z.object({
-    email: z.string().email(t("addUser.form.email.error")),
+    email: z.string().min(1, t("form.email.error.required")).email(t("form.email.error.format")),
     role: z.nativeEnum(Role),
   });
 };
