@@ -2,7 +2,11 @@ import { getTranslations } from "next-intl/server";
 import { ZSAError, createServerActionProcedure } from "zsa";
 import { getCurrentSession } from "./auth";
 
-export const authedProcedure = createServerActionProcedure().handler(async () => {
+export const publicProcedure = createServerActionProcedure().handler(async () => {
+  return {};
+});
+
+export const authProcedure = createServerActionProcedure().handler(async () => {
   const t = await getTranslations("Form");
   try {
     const { user, session } = await getCurrentSession();
@@ -13,7 +17,7 @@ export const authedProcedure = createServerActionProcedure().handler(async () =>
   }
 });
 
-export const isAdminProcedure = createServerActionProcedure(authedProcedure).handler(
+export const adminProcedure = createServerActionProcedure(authProcedure).handler(
   async ({ ctx: { user } }) => {
     const t = await getTranslations("Form");
     if (user.role !== "admin") throw new ZSAError("NOT_AUTHORIZED", t("unauthorized"));

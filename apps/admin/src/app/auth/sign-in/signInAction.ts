@@ -2,15 +2,16 @@
 
 import { routes } from "@/config/routes";
 import { createSession, generateSessionToken, setSessionTokenCookie } from "@/utils/auth";
-import { handleServerError } from "@/utils/zsa";
+import { handleServerError, publicProcedure } from "@/utils/zsa";
 import { prisma } from "@repo/db";
 import * as argon2 from "argon2";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { ZSAError, createServerAction } from "zsa";
+import { ZSAError } from "zsa";
 
-export const signInAction = createServerAction()
+export const signInAction = publicProcedure
+  .createServerAction()
   .input(
     z.object({
       email: z.string().email(),

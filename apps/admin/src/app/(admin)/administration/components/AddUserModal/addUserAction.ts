@@ -2,7 +2,7 @@
 
 import { routes } from "@/config/routes";
 import { generateRandomString } from "@/utils/generateRandomString";
-import { handleServerError, isAdminProcedure } from "@/utils/zsa";
+import { adminProcedure, handleServerError } from "@/utils/zsa";
 import { Role } from "@prisma/client";
 import { prisma } from "@repo/db";
 import * as argon2 from "argon2";
@@ -11,7 +11,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { ZSAError } from "zsa";
 
-export const addUserAction = isAdminProcedure
+export const addUserAction = adminProcedure
   .createServerAction()
   .input(
     z.object({
