@@ -1,14 +1,14 @@
 import { cn } from "@/utils/cn";
 import { Form as AntdForm } from "antd";
-import { useEffect } from "react";
+import { ComponentProps, ReactNode, useEffect } from "react";
 import { Children, cloneElement, isValidElement } from "react";
-import type { Control, FieldPath, FieldValues } from "react-hook-form";
+import { Control, FieldPath, FieldValues } from "react-hook-form";
 import { useController } from "react-hook-form";
 
-type AntdFormItemProps = React.ComponentProps<typeof AntdForm.Item>;
+type AntdFormItemProps = ComponentProps<typeof AntdForm.Item>;
 
 export type FormItemProps<TFieldValues extends FieldValues = FieldValues> = {
-  children: React.ReactNode;
+  children: ReactNode;
   control: Control<TFieldValues>;
   name: FieldPath<TFieldValues>;
   disabled?: boolean;

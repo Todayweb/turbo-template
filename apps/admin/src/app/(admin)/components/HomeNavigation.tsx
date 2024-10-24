@@ -1,7 +1,7 @@
 "use client";
 
 import { useAdminNavigationItems } from "@/hooks/useAdminNavigationItems";
-import type { Role } from "@prisma/client";
+import { Role } from "@prisma/client";
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
 

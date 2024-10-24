@@ -2,7 +2,7 @@ import { routes } from "@/config/routes";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cache } from "react";
-import { type SessionEnsured, type SessionOptional, validateSessionToken } from "./sessions";
+import { SessionEnsured, SessionOptional, validateSessionToken } from "./sessions";
 
 export const setSessionTokenCookie = (token: string, expiresAt: Date) => {
   cookies().set("session", token, {

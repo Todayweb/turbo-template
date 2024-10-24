@@ -1,15 +1,14 @@
 "use client";
 
 import { StyleProvider } from "@ant-design/cssinjs";
-import { App, ConfigProvider, theme as antdTheme } from "antd";
-import type { ThemeConfig } from "antd";
+import { App, ConfigProvider, ThemeConfig, theme as antdTheme } from "antd";
 import enUS from "antd/locale/en_US";
 import sk_SK from "antd/locale/sk_SK";
 import { useLocale } from "next-intl";
 import { useTheme } from "next-themes";
-import { useEffect, useMemo, useState } from "react";
+import { PropsWithChildren, useEffect, useMemo, useState } from "react";
 
-export const AntdConfigProvider = ({ children }: React.PropsWithChildren) => {
+export const AntdConfigProvider = ({ children }: PropsWithChildren) => {
   const [rendered, setRendered] = useState(false);
   const { resolvedTheme } = useTheme();
   const locale = useLocale();

@@ -1,6 +1,6 @@
 "use client";
 
-import type { Theme } from "@/types/theme";
+import { Theme } from "@/types/theme";
 import { MoonOutlined, SettingOutlined, SunOutlined } from "@ant-design/icons";
 import { Flex, Radio, Typography } from "antd";
 import { useTranslations } from "next-intl";

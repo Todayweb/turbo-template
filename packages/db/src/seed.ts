@@ -1,4 +1,4 @@
-import type { User } from "@prisma/client";
+import { User } from "@prisma/client";
 import * as argon2 from "argon2";
 import { prisma } from "./client";
 

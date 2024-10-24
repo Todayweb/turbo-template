@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import "@/styles/globals.css";
 import { AntdConfigProvider } from "@/providers/AntdConfigProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
@@ -7,6 +7,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Montserrat as FontSans } from "next/font/google";
+import { ReactNode } from "react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const locale = await getLocale();
   const messages = await getMessages();

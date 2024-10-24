@@ -3,9 +3,9 @@
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { cn } from "@/utils/cn";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, type ButtonProps } from "antd";
+import { Button, ButtonProps } from "antd";
 import { useTranslations } from "next-intl";
-import type { ComponentProps } from "react";
+import { ComponentProps } from "react";
 
 export const ActionBar = ({ className, ...rest }: ComponentProps<"div">) => {
   return (

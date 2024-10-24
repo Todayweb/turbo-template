@@ -4,9 +4,9 @@ import { Logo } from "@/components/Logo";
 import { Settings } from "@/components/Settings";
 import { SignOut } from "@/components/SignOut";
 import { getPathKey } from "@/utils/getPathKey";
-import { Layout, Menu, type MenuProps } from "antd";
+import { Layout, Menu, MenuProps } from "antd";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import { useMemo } from "react";
 import { useAppLayoutContext } from "..";
 
 const { Sider } = Layout;
@@ -46,7 +46,7 @@ const AppSiderMenu = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const selectedKeys = React.useMemo(() => {
+  const selectedKeys = useMemo(() => {
     const pathKey = getPathKey(pathname);
     if (pathKey) {
       if (!pathKey?.length || pathKey === "home") return ["/"];

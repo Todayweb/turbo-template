@@ -1,6 +1,6 @@
 import { adminNavigationItems, routes } from "@/config/routes";
 import { userHasPermissions } from "@/utils/userHasPermissions";
-import type { Role } from "@prisma/client";
+import { Role } from "@prisma/client";
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 

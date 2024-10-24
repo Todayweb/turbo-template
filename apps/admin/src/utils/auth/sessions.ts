@@ -1,7 +1,7 @@
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 
-import type { Session, User } from "@prisma/client";
+import { Session, User } from "@prisma/client";
 import { prisma } from "@repo/db";
 
 export type SessionOptional = { session: Session; user: User } | { session: null; user: null };

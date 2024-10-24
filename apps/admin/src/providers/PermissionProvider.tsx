@@ -1,11 +1,11 @@
 "use client";
 
-import { type AdminRoute, adminRoutes, adminRoutesPermissions } from "@/config/routes";
+import { AdminRoute, adminRoutes, adminRoutesPermissions } from "@/config/routes";
 import { getPathKey } from "@/utils/getPathKey";
 import { userHasPermissions } from "@/utils/userHasPermissions";
-import type { Role } from "@prisma/client";
+import { Role } from "@prisma/client";
 import { notFound, usePathname } from "next/navigation";
-import { type ReactNode, createContext, useContext } from "react";
+import { ReactNode, createContext, useContext } from "react";
 
 type PermissionProviderProps = {
   children: ReactNode;

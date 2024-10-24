@@ -1,7 +1,6 @@
 "use client";
 
-import type { Dispatch, ReactNode, SetStateAction } from "react";
-import { createContext, useContext, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
 
 export type SettingsDrawerProviderProps = {
   children: ReactNode;

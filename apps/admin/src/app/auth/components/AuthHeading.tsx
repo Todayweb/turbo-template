@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn";
 import { Typography } from "antd";
-import type { TitleProps } from "antd/es/typography/Title";
+import { TitleProps } from "antd/es/typography/Title";
 
 export const AuthHeading = ({ children, className }: TitleProps) => {
   return (

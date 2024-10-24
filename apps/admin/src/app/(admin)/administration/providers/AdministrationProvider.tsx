@@ -1,10 +1,11 @@
 "use client";
 
-import type { Role, User } from "@prisma/client";
+import { Role, User } from "@prisma/client";
 import {
-  type Dispatch,
-  type Key,
-  type SetStateAction,
+  Dispatch,
+  Key,
+  ReactNode,
+  SetStateAction,
   createContext,
   useContext,
   useState,
@@ -17,7 +18,7 @@ export type UserTableData = {
 };
 
 type AdministrationProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   data: Omit<User, "password">[];
   userId: string;
 };

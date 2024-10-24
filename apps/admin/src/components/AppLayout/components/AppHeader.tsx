@@ -2,7 +2,6 @@
 
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Layout } from "antd";
-import React from "react";
 import { useAppLayoutContext } from "..";
 
 const { Header } = Layout;

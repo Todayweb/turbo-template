@@ -8,7 +8,6 @@ import {
   ActionUpdateButton,
 } from "@/components/ActionBar";
 import { UserAddOutlined } from "@ant-design/icons";
-import React from "react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 
 export const UserActionBar = () => {

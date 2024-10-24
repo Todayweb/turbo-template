@@ -1,7 +1,7 @@
 "use client";
 
-import { Layout, theme } from "antd";
-import React, { type PropsWithChildren } from "react";
+import { Layout } from "antd";
+import { PropsWithChildren } from "react";
 import { useAppLayoutContext } from "..";
 
 const { Content } = Layout;

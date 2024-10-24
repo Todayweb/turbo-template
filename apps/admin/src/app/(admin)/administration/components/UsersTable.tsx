@@ -1,8 +1,8 @@
 "use client";
 
-import { Table, type TableProps } from "antd";
+import { Table, TableProps } from "antd";
 import { useTranslations } from "next-intl";
-import { type UserTableData, useAdministrationContext } from "../providers/AdministrationProvider";
+import { UserTableData, useAdministrationContext } from "../providers/AdministrationProvider";
 
 export const UsersTable = () => {
   const t = useTranslations("Administration");

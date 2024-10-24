@@ -1,7 +1,6 @@
 "use client";
 
-import { Alert, type AlertProps, Form } from "antd";
-import React from "react";
+import { Alert, AlertProps, Form } from "antd";
 
 type Props = Omit<AlertProps, "message"> & {
   message?: string | null;

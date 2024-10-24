@@ -2,7 +2,7 @@ import { SettingsDrawer } from "./components/SettingsDrawer";
 import { TriggerButton } from "./components/TriggerButton";
 import {
   SettingsDrawerProvider,
-  type SettingsDrawerProviderProps,
+  SettingsDrawerProviderProps,
 } from "./providers/SettingsDrawerProvider";
 
 export type SettingsProps = {

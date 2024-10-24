@@ -1,7 +1,7 @@
 "use client";
 
 import { Layout } from "antd";
-import React, { type PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { Logo } from "./Logo";
 import { Settings } from "./Settings";
 

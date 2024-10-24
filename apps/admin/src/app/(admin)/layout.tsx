@@ -1,11 +1,12 @@
 import { AppLayout } from "@/components/AppLayout";
 import { PermissionProvider } from "@/providers/PermissionProvider";
 import { getEnsuredSession } from "@/utils/auth";
+import { ReactNode } from "react";
 
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const { user } = await getEnsuredSession();
 

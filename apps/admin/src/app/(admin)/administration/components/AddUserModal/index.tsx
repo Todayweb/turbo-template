@@ -3,14 +3,14 @@
 import { FormAlert } from "@/components/FormAlert";
 import { FormItem } from "@/components/FormItem";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { Role } from "@prisma/client";
+import { Role } from "@prisma/client";
 import { Button, Form, Input, Modal, Select } from "antd";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 import { addUserAction } from "./addUserAction";
-import { type FormValues, defaultValues, schema } from "./addUserConfig";
+import { FormValues, defaultValues, schema } from "./addUserConfig";
 
 const roleOptions: { value: Role; label: string }[] = [
   { value: "admin", label: "Admin" },
