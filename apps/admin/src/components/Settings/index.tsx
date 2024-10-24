@@ -1,6 +1,9 @@
-import { SettingsDrawer } from "./SettingsDrawer";
-import { SettingsDrawerProvider, type SettingsDrawerProviderProps } from "./SettingsDrawerProvider";
-import { TriggerButton } from "./TriggerButton";
+import { SettingsDrawer } from "./components/SettingsDrawer";
+import { TriggerButton } from "./components/TriggerButton";
+import {
+  SettingsDrawerProvider,
+  type SettingsDrawerProviderProps,
+} from "./providers/SettingsDrawerProvider";
 
 export type SettingsProps = {
   triggerIconOnly?: SettingsDrawerProviderProps["triggerIconOnly"];

@@ -3,10 +3,11 @@
 import { Logo } from "@/components/Logo";
 import { Settings } from "@/components/Settings";
 import { SignOut } from "@/components/SignOut";
-import { Layout } from "antd";
+import { getPathKey } from "@/utils/getPathKey";
+import { Layout, Menu, type MenuProps } from "antd";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { useAppLayoutContext } from "..";
-import { AppMenu } from "./AppMenu";
 
 const { Sider } = Layout;
 
@@ -27,7 +28,7 @@ export const AppSider = () => {
           <div className="my-5 flex w-full justify-center">
             <Logo />
           </div>
-          <AppMenu />
+          <AppSiderMenu />
         </div>
 
         <div className="m-4 flex flex-col items-center justify-between gap-2">
@@ -36,5 +37,35 @@ export const AppSider = () => {
         </div>
       </div>
     </Sider>
+  );
+};
+
+const AppSiderMenu = () => {
+  const { menuItems, backgroundColor } = useAppLayoutContext();
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const selectedKeys = React.useMemo(() => {
+    const pathKey = getPathKey(pathname);
+    if (pathKey) {
+      if (!pathKey?.length || pathKey === "home") return ["/"];
+      return [`/${pathKey}`];
+    }
+    return [pathname];
+  }, [pathname]);
+
+  const onMenuClick: MenuProps["onClick"] = (e) => router.push(e.key);
+
+  return (
+    <Menu
+      onClick={onMenuClick}
+      className="border-r-0"
+      mode="inline"
+      defaultSelectedKeys={selectedKeys}
+      selectedKeys={selectedKeys}
+      items={menuItems}
+      style={{ background: backgroundColor }}
+    />
   );
 };
