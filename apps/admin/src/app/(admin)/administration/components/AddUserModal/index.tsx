@@ -2,20 +2,15 @@
 
 import { FormAlert } from "@/components/FormAlert";
 import { FormItem } from "@/components/FormItem";
-import { createFormData } from "@/utils/createFormData";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Role } from "@prisma/client";
 import { Form, Input, Modal, Select } from "antd";
 import { useTranslations } from "next-intl";
-import { useTransition } from "react";
-import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import { useServerAction } from "zsa-react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 import { addUserAction } from "./addUserAction";
-import { addUserSchema } from "./addUserSchema";
-
-type FormValues = z.output<ReturnType<typeof addUserSchema>>;
+import { type FormValues, useAddUserSchema } from "./useAddUserSchema";
 
 const roleOptions: { value: Role; label: string }[] = [
   { value: "admin", label: "Admin" },
@@ -23,32 +18,39 @@ const roleOptions: { value: Role; label: string }[] = [
 ];
 
 export const AddUserModal = () => {
-  const { showAddUserModal, setShowAddUserModal } = useAdministrationContext();
   const t = useTranslations("Administration");
+  const { showAddUserModal, setShowAddUserModal } = useAdministrationContext();
 
-  const [isPending, startTransition] = useTransition();
-  const [formState, formAction] = useFormState(addUserAction, null);
+  const schema = useAddUserSchema();
 
-  const { control, handleSubmit, reset } = useForm<FormValues>({
+  const {
+    control,
+    handleSubmit,
+    reset: resetForm,
+  } = useForm<FormValues>({
     defaultValues: {
       email: "",
       role: "admin",
     },
-    resolver: zodResolver(addUserSchema(t)),
+    resolver: zodResolver(schema),
   });
 
   const onModalClose = () => {
     setShowAddUserModal(false);
-    reset();
+    resetForm();
+    resetAction();
   };
 
-  const onSubmit = async (data: FormValues) => {
-    startTransition(async () => {
-      formAction(createFormData(data));
-    });
+  const {
+    isPending,
+    execute,
+    error,
+    reset: resetAction,
+  } = useServerAction(addUserAction, {
+    onSuccess: () => onModalClose(),
+  });
 
-    onModalClose();
-  };
+  const onSubmit = (data: FormValues) => execute(data);
 
   return (
     <Modal
@@ -69,7 +71,7 @@ export const AddUserModal = () => {
           <Select options={roleOptions} />
         </FormItem>
 
-        <FormAlert message={formState?.error} />
+        <FormAlert message={error?.message} />
       </Form>
     </Modal>
   );
