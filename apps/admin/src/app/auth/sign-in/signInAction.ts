@@ -2,41 +2,39 @@
 
 import { routes } from "@/config/routes";
 import { createSession, generateSessionToken, setSessionTokenCookie } from "@/utils/auth";
+import { handleServerError } from "@/utils/zsa";
 import { prisma } from "@repo/db";
 import * as argon2 from "argon2";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
-import { signInSchema } from "./signInSchema";
+import { z } from "zod";
+import { ZSAError, createServerAction } from "zsa";
 
-export type FormState = {
-  error?: string;
-};
+export const signInAction = createServerAction()
+  .input(
+    z.object({
+      email: z.string().email(),
+      password: z.string().min(1),
+    }),
+  )
+  .onSuccess(async () => {
+    redirect(routes.home);
+  })
+  .handler(async ({ input }) => {
+    const t = await getTranslations("Form");
+    const { email, password } = input;
 
-export const signInAction = async (_: unknown, data: FormData): Promise<FormState> => {
-  const tForm = await getTranslations("Form");
-  const tAuth = await getTranslations("Auth");
+    try {
+      const user = await prisma.user.findUnique({ where: { email } });
+      if (!user) throw new ZSAError("NOT_FOUND", t("serverError"));
 
-  const formData = Object.fromEntries(data);
-  const parsed = signInSchema(tAuth).safeParse(formData);
+      const isValidPassword = await argon2.verify(user.password, password);
+      if (!isValidPassword) throw new ZSAError("NOT_FOUND", t("serverError"));
 
-  if (!parsed.success) return { error: tForm("wrongInput") };
-
-  const { email, password } = parsed.data;
-
-  try {
-    const user = await prisma.user.findUnique({ where: { email } });
-    if (!user) return { error: tForm("serverError") };
-
-    const isValidPassword = await argon2.verify(user.password, password);
-    if (!isValidPassword) return { error: tForm("serverError") };
-
-    const token = generateSessionToken();
-    createSession(token, user?.id);
-    setSessionTokenCookie(token, new Date(new Date().getTime() + 30 * 60000));
-  } catch (e) {
-    console.error("error", e);
-    return { error: tForm("serverError") };
-  }
-
-  redirect(routes.home);
-};
+      const token = generateSessionToken();
+      await createSession(token, user.id);
+      setSessionTokenCookie(token, new Date(new Date().getTime() + 30 * 60000));
+    } catch (error) {
+      await handleServerError(error);
+    }
+  });

@@ -1,40 +1,31 @@
 "use client";
 
+import { FormAlert } from "@/components/FormAlert";
 import { FormItem } from "@/components/FormItem";
 import { routes } from "@/config/routes";
-import { createFormData } from "@/utils/createFormData";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Alert, Button, Card, Flex, Form, Input } from "antd";
+import { Button, Card, Flex, Form, Input } from "antd";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useTransition } from "react";
-import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import { useServerAction } from "zsa-react";
 import { AuthContainer, AuthHeading } from "../components";
 import { signInAction } from "./signInAction";
-import { signInSchema } from "./signInSchema";
-
-type FormValues = z.output<ReturnType<typeof signInSchema>>;
+import { type FormValues, defaultValues, useSchema } from "./signInConfig";
 
 export default function SignIn() {
   const t = useTranslations("Auth");
-  const [isPending, startTransition] = useTransition();
-  const [formState, formAction] = useFormState(signInAction, null);
+
+  const schema = useSchema();
 
   const { control, handleSubmit } = useForm<FormValues>({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-    resolver: zodResolver(signInSchema(t)),
+    defaultValues,
+    resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FormValues) => {
-    startTransition(async () => {
-      formAction(createFormData(data));
-    });
-  };
+  const { isPending, execute, error } = useServerAction(signInAction);
+
+  const onSubmit = (data: FormValues) => execute(data);
 
   return (
     <>
@@ -73,11 +64,7 @@ export default function SignIn() {
               />
             </FormItem>
 
-            {!!formState?.error && (
-              <Form.Item>
-                <Alert type="error" message={formState.error} showIcon />
-              </Form.Item>
-            )}
+            <FormAlert type="error" message={error?.message} />
 
             <Form.Item>
               <Button type="primary" htmlType="submit" block loading={isPending}>

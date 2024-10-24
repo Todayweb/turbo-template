@@ -4,13 +4,13 @@ import { FormAlert } from "@/components/FormAlert";
 import { FormItem } from "@/components/FormItem";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Role } from "@prisma/client";
-import { Form, Input, Modal, Select } from "antd";
+import { Button, Form, Input, Modal, Select } from "antd";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 import { addUserAction } from "./addUserAction";
-import { type FormValues, useAddUserSchema } from "./useAddUserSchema";
+import { type FormValues, defaultValues, useSchema } from "./addUserConfig";
 
 const roleOptions: { value: Role; label: string }[] = [
   { value: "admin", label: "Admin" },
@@ -21,17 +21,14 @@ export const AddUserModal = () => {
   const t = useTranslations("Administration");
   const { showAddUserModal, setShowAddUserModal } = useAdministrationContext();
 
-  const schema = useAddUserSchema();
+  const schema = useSchema();
 
   const {
     control,
     handleSubmit,
     reset: resetForm,
   } = useForm<FormValues>({
-    defaultValues: {
-      email: "",
-      role: "admin",
-    },
+    defaultValues,
     resolver: zodResolver(schema),
   });
 
@@ -62,7 +59,7 @@ export const AddUserModal = () => {
       closable={false}
       maskClosable={false}
     >
-      <Form layout="vertical">
+      <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
         <FormItem required control={control} name="email" label={t("addUser.form.email.label")}>
           <Input type="email" placeholder={t("addUser.form.email.palceholder")} autoFocus />
         </FormItem>
@@ -71,7 +68,9 @@ export const AddUserModal = () => {
           <Select options={roleOptions} />
         </FormItem>
 
-        <FormAlert message={error?.message} />
+        <FormAlert type="error" message={error?.message} />
+
+        <Button htmlType="submit" className="hidden" />
       </Form>
     </Modal>
   );

@@ -7,12 +7,12 @@ type Props = Omit<AlertProps, "message"> & {
   message?: string | null;
 };
 
-export const FormAlert = ({ showIcon = true, message = null, type = "error", ...rest }: Props) => {
+export const FormAlert = ({ showIcon = true, message = null, ...rest }: Props) => {
   if (!message) return null;
 
   return (
     <Form.Item>
-      <Alert type={type} message={message} showIcon={showIcon} {...rest} />
+      <Alert message={message} showIcon={showIcon} {...rest} />
     </Form.Item>
   );
 };
