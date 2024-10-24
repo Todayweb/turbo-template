@@ -1,6 +1,6 @@
 "use client";
 
-import type { User } from "@prisma/client";
+import type { Role, User } from "@prisma/client";
 import {
   type Dispatch,
   type Key,
@@ -13,7 +13,7 @@ import {
 export type UserTableData = {
   key: string;
   email: string;
-  role: string;
+  role: Role;
 };
 
 type AdministrationProviderProps = {
@@ -31,6 +31,8 @@ type AdministrationContextProps = {
   resetSelectedRows: VoidFunction;
   showAddUserModal: boolean;
   setShowAddUserModal: Dispatch<SetStateAction<boolean>>;
+  showUpdateUserModal: boolean;
+  setShowUpdateUserModal: Dispatch<SetStateAction<boolean>>;
   showDeleteUserModal: boolean;
   setShowDeleteUserModal: Dispatch<SetStateAction<boolean>>;
 };
@@ -39,6 +41,7 @@ const AdministrationContext = createContext<AdministrationContextProps | null>(n
 
 export const AdministrationProvider = ({ children, data, userId }: AdministrationProviderProps) => {
   const [showAddUserModal, setShowAddUserModal] = useState(false);
+  const [showUpdateUserModal, setShowUpdateUserModal] = useState(false);
   const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
   const [selectedRow, setSelectedRow] = useState<UserTableData | undefined>();
@@ -69,6 +72,8 @@ export const AdministrationProvider = ({ children, data, userId }: Administratio
         tableData,
         showAddUserModal,
         setShowAddUserModal,
+        showUpdateUserModal,
+        setShowUpdateUserModal,
         showDeleteUserModal,
         setShowDeleteUserModal,
         resetSelectedRows,
