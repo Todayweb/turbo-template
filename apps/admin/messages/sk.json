@@ -1,6 +1,6 @@
 {
   "Error": {
-    "message": "Hupss.. niečo sa pokazilo.",
+    "message": "Ou nie, niečo sa pokazilo.",
     "button": "Skúsiť znova"
   },
   "NotFound": {
@@ -27,7 +27,7 @@
     }
   },
   "Form": {
-    "serverError": "Hupss.. niečo sa pokazilo. Skús znova.",
+    "serverError": "Ou nie, niečo sa pokazilo. Skús znova.",
     "wrongInput": "Wrong form data input.",
     "unauthorized": "Neoprávnený prístup."
   },

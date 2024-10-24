@@ -7,6 +7,7 @@ import {
   ActionItems,
   ActionUpdateButton,
 } from "@/components/ActionBar";
+import { UserAddOutlined } from "@ant-design/icons";
 import React from "react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 
@@ -17,7 +18,7 @@ export const UserActionBar = () => {
   return (
     <ActionBar>
       <ActionItems>
-        <ActionAddButton onClick={() => setShowAddUserModal(true)} />
+        <ActionAddButton icon={<UserAddOutlined />} onClick={() => setShowAddUserModal(true)} />
         <ActionUpdateButton disabled={!selectedRow} onClick={() => setShowUpdateUserModal(true)} />
       </ActionItems>
 

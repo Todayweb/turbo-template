@@ -4,17 +4,23 @@ import { Table, type TableProps } from "antd";
 import { useTranslations } from "next-intl";
 import { type UserTableData, useAdministrationContext } from "../providers/AdministrationProvider";
 
-const columnKeys = ["email", "role"] as const;
-
 export const UsersTable = () => {
   const t = useTranslations("Administration");
   const { onRowChange, selectedRowKeys, tableData, userId } = useAdministrationContext();
 
-  const columns: TableProps<UserTableData>["columns"] = columnKeys.map((key) => ({
-    title: t(`userTable.${key}`),
-    dataIndex: key,
-    key: key,
-  }));
+  const columns: TableProps<UserTableData>["columns"] = [
+    {
+      title: t("userTable.email"),
+      key: "email",
+      dataIndex: "email",
+    },
+    {
+      title: t("userTable.role"),
+      key: "role",
+      dataIndex: "role",
+      responsive: ["md"],
+    },
+  ];
 
   return (
     <Table

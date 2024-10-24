@@ -26,6 +26,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
+    "usehooks-ts": "^3.1.0",
     "zod": "^3.23.8",
     "zsa": "^0.6.0",
     "zsa-react": "^0.2.3"

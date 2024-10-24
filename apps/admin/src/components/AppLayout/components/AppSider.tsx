@@ -18,6 +18,7 @@ export const AppSider = () => {
       trigger={null}
       collapsible
       collapsed={collapsed}
+      collapsedWidth="0"
       className="overflow-auto sticky h-screen top-0 bottom-0 border-r dark:border-gray-500"
       style={{ background: backgroundColor }}
     >

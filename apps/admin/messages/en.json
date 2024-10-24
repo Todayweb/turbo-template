@@ -1,6 +1,6 @@
 {
   "Error": {
-    "message": "Hupss.. something went wrong.",
+    "message": "Oh no, something went wrong.",
     "button": "Try again"
   },
   "NotFound": {
@@ -27,7 +27,7 @@
     }
   },
   "Form": {
-    "serverError": "Hupss.. something went wrong. Try again.",
+    "serverError": "Oh no, something went wrong. Try again.",
     "wrongInput": "Wrong form data input.",
     "unauthorized": "Unauthorized."
   },
