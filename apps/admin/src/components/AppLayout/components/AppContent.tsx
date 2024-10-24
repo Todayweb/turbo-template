@@ -12,7 +12,7 @@ export const AppContent = ({ children }: PropsWithChildren) => {
 
   return (
     <Content className="m-4 flex flex-col">
-      <div className="p-6 rounded-md flex-grow" style={{ background: colorBgContainer }}>
+      <div className="flex-grow rounded-md p-6" style={{ background: colorBgContainer }}>
         {children}
       </div>
     </Content>

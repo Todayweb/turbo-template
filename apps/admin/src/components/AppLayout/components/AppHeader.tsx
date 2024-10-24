@@ -12,15 +12,15 @@ export const AppHeader = () => {
 
   return (
     <Header
-      className="pr-6 pl-0 sticky top-0 right-0 border-b dark:border-gray-500"
+      className="sticky top-0 right-0 border-b pr-6 pl-0 dark:border-gray-500"
       style={{ background: backgroundColor }}
     >
-      <div className="flex justify-between w-full">
+      <div className="flex w-full justify-between">
         <Button
           type="text"
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           onClick={() => setCollapsed((prev) => !prev)}
-          className="w-16 h-16 rounded-none"
+          className="h-16 w-16 rounded-none"
         />
       </div>
     </Header>

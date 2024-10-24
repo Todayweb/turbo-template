@@ -14,7 +14,7 @@ export const HomeNavigation = ({ role }: Props) => {
   const menuItems = useAdminNavigationItems({ role, skipHome: true });
 
   return (
-    <div className="flex justify-center gap-x-2 gap-y-4 flex-wrap max-w-80">
+    <div className="flex max-w-80 flex-wrap justify-center gap-x-2 gap-y-4">
       {menuItems.map(({ key, icon, label }) => (
         <Button
           onClick={() => router.push(key)}

@@ -26,6 +26,16 @@
       "recommended": true,
       "correctness": {
         "useExhaustiveDependencies": "off"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["clsx", "cva", "tw"]
+          },
+          "level": "error",
+          "fix": "safe"
+        }
       }
     }
   }

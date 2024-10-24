@@ -7,7 +7,7 @@ export default async function Home() {
   const { user } = await getEnsuredSession();
 
   return (
-    <div className="flex justify-center items-center flex-col gap-4">
+    <div className="flex flex-col items-center justify-center gap-4">
       <Logo size="large" />
       <HomeNavigation role={user.role} />
     </div>

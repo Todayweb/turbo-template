@@ -10,7 +10,7 @@ import type { ComponentProps } from "react";
 export const ActionBar = ({ className, ...rest }: ComponentProps<"div">) => {
   return (
     <div
-      className={cn("flex items-center justify-between flex-col sm:flex-row gap-2 py-4", className)}
+      className={cn("flex flex-col items-center justify-between gap-2 py-4 sm:flex-row", className)}
       {...rest}
     />
   );
@@ -18,7 +18,7 @@ export const ActionBar = ({ className, ...rest }: ComponentProps<"div">) => {
 
 export const ActionItems = ({ className, ...rest }: ComponentProps<"div">) => (
   <div
-    className={cn("flex items-center gap-2 flex-col sm:flex-row w-full sm:w-auto", className)}
+    className={cn("flex w-full flex-col items-center gap-2 sm:w-auto sm:flex-row", className)}
     {...rest}
   />
 );

@@ -19,18 +19,18 @@ export const AppSider = () => {
       collapsible
       collapsed={collapsed}
       collapsedWidth="0"
-      className="overflow-auto sticky h-screen top-0 bottom-0 border-r dark:border-gray-500"
+      className="sticky top-0 bottom-0 h-screen overflow-auto border-r dark:border-gray-500"
       style={{ background: backgroundColor }}
     >
-      <div className="flex justify-between flex-col h-full">
+      <div className="flex h-full flex-col justify-between">
         <div>
-          <div className="w-full my-5 flex justify-center">
+          <div className="my-5 flex w-full justify-center">
             <Logo />
           </div>
           <AppMenu />
         </div>
 
-        <div className="flex gap-2 items-center justify-between m-4 flex-col">
+        <div className="m-4 flex flex-col items-center justify-between gap-2">
           <Settings iconOnly={collapsed} />
           <SignOut iconOnly={collapsed} />
         </div>
