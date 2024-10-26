@@ -34,6 +34,8 @@ export const addUserAction = adminProcedure
           password,
         },
       });
+
+      // TODO send email to user with password
     } catch (error) {
       await handleServerError(error);
     }

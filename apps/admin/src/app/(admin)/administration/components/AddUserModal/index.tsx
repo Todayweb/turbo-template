@@ -12,6 +12,7 @@ import { useAdministrationContext } from "../../providers/AdministrationProvider
 import { addUserAction } from "./addUserAction";
 import { FormValues, defaultValues, schema } from "./addUserConfig";
 
+// TODO translation
 const roleOptions: { value: Role; label: string }[] = [
   { value: "admin", label: "Admin" },
   { value: "editor", label: "Editor" },
