@@ -78,6 +78,11 @@
       "email": "Email",
       "role": "Rola"
     },
+    "roleOptions": {
+      "admin": "Admin",
+      "editor": "Editor",
+      "noAccess": "Zakázaný prístup"
+    },
     "form": {
       "email": {
         "label": "Email",

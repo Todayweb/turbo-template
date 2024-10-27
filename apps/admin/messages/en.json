@@ -78,6 +78,11 @@
       "email": "Email",
       "role": "Role"
     },
+    "roleOptions": {
+      "admin": "Admin",
+      "editor": "Editor",
+      "noAccess": "No access"
+    },
     "form": {
       "email": {
         "label": "Email",

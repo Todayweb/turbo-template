@@ -8,19 +8,15 @@ import { Button, Form, Input, Modal, Select } from "antd";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
+import { useRoleOptions } from "../../hooks/useRoleOptions";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 import { addUserAction } from "./addUserAction";
 import { FormValues, defaultValues, schema } from "./addUserConfig";
 
-// TODO translation
-const roleOptions: { value: Role; label: string }[] = [
-  { value: "admin", label: "Admin" },
-  { value: "editor", label: "Editor" },
-];
-
 export const AddUserModal = () => {
   const t = useTranslations("Administration");
   const { showAddUserModal, setShowAddUserModal } = useAdministrationContext();
+  const roleOptions = useRoleOptions();
 
   const {
     control,

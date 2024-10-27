@@ -14,7 +14,6 @@ export type FormItemProps<TFieldValues extends FieldValues = FieldValues> = {
   disabled?: boolean;
 } & Omit<AntdFormItemProps, "name" | "rules" | "validateStatus">;
 
-// TODO: Support `onBlur` `ref` `reset`
 export const FormItem = <TFieldValues extends FieldValues = FieldValues>({
   children,
   control,

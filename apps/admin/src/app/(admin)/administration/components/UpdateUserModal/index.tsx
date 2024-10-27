@@ -9,20 +9,16 @@ import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
+import { useRoleOptions } from "../../hooks/useRoleOptions";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
 import { updateUserAction } from "./updateUserAction";
 import { FormValues, defaultValues, schema } from "./updateUserConfig";
-
-// TODO reusable with add
-const roleOptions: { value: Role; label: string }[] = [
-  { value: "admin", label: "Admin" },
-  { value: "editor", label: "Editor" },
-];
 
 export const UpdateUserModal = () => {
   const t = useTranslations("Administration");
   const { showUpdateUserModal, setShowUpdateUserModal, selectedRow, resetSelectedRows } =
     useAdministrationContext();
+  const roleOptions = useRoleOptions();
 
   const {
     control,
