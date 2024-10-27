@@ -2,7 +2,8 @@
   "name": "turbo-template",
   "private": true,
   "scripts": {
-    "clean": "turbo clean && rm -rf node_modules && rm -rf package-lock.json && rm -rf .turbo",
+    "clean:root": "rm -rf node_modules && rm -rf package-lock.json && rm -rf .turbo",
+    "clean:turbo": "turbo clean && npm run clean:root && npm install && turbo db:generate",
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write"
   },
@@ -15,5 +16,8 @@
   "workspaces": ["apps/*", "packages/*"],
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "resend": "^4.0.0"
   }
 }

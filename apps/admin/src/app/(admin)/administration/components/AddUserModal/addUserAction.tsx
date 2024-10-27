@@ -7,8 +7,12 @@ import { prisma } from "@repo/db";
 import * as argon2 from "argon2";
 import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
+import { Resend } from "resend";
 import { ZSAError } from "zsa";
+import { AddUserEmail } from "./AddUserEmail";
 import { schema } from "./addUserConfig";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const addUserAction = adminProcedure
   .createServerAction()
@@ -17,17 +21,17 @@ export const addUserAction = adminProcedure
     revalidatePath(routes.administration);
   })
   .handler(async ({ input }) => {
-    const tAdministration = await getTranslations("Administration");
+    const t = await getTranslations("Administration");
     const { email, role } = input;
 
     try {
       const userExists = await prisma.user.findUnique({ where: { email } });
-      if (userExists) throw new ZSAError("CONFLICT", tAdministration("form.error.userExists"));
+      if (userExists) throw new ZSAError("CONFLICT", t("form.error.userExists"));
 
       const generatedPassword = generateRandomString(10);
       const password = await argon2.hash(generatedPassword);
 
-      await prisma.user.create({
+      const { id: userId } = await prisma.user.create({
         data: {
           email,
           role,
@@ -35,7 +39,14 @@ export const addUserAction = adminProcedure
         },
       });
 
-      // TODO send email to user with password
+      const { error } = await resend.emails.send({
+        from: "info@todayweb.sk",
+        to: email,
+        subject: t("addUser.email.subject"),
+        react: <AddUserEmail email={email} password={generatedPassword} />,
+      });
+
+      if (error) await prisma.user.delete({ where: { id: userId } });
     } catch (error) {
       await handleServerError(error);
     }

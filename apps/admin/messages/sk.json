@@ -100,7 +100,12 @@
       }
     },
     "addUser": {
-      "title": "Pridať požívateľa"
+      "title": "Pridať požívateľa",
+      "email": {
+        "subject": "Vitaj v admine",
+        "message": "Dostal si prístup do admina email: {email} a password: {password}.",
+        "link": "Klikni sem pre prístup do admina."
+      }
     },
     "updateUser": {
       "title": "Upraviť požívateľa"

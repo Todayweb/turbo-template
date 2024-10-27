@@ -100,7 +100,12 @@
       }
     },
     "addUser": {
-      "title": "Add user"
+      "title": "Add user",
+      "email": {
+        "subject": "Welcome to admin",
+        "message": "You got access to admin with email: {email} and password: {password}.",
+        "link": "Click here to go to admin."
+      }
     },
     "updateUser": {
       "title": "Update user"

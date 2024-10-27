@@ -3,7 +3,6 @@
 import { FormAlert } from "@/components/FormAlert";
 import { FormItem } from "@/components/FormItem";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Role } from "@prisma/client";
 import { Button, Form, Input, Modal, Select } from "antd";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
