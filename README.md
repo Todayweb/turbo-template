@@ -16,7 +16,11 @@ To run this project, you will need to add the following environment variables to
 `DATABASE_URL`
 
 #### apps/web/.env
-`NEXT_PUBLIC_TEST`
+`BASE_URL`
+
+#### apps/admin/.env
+`BASE_URL`
+`RESEND_API_KEY`
 
 ## Run Locally
 
