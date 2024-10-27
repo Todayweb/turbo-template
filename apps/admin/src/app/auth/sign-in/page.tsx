@@ -9,9 +9,10 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
-import { AuthContainer, AuthHeading } from "../components";
-import { signInAction } from "./signInAction";
-import { FormValues, defaultValues, schema } from "./signInConfig";
+import { AuthContainer } from "../components/AuthContainer";
+import { AuthHeading } from "../components/AuthHeading";
+import { signInAction } from "./sign-in-action";
+import { FormValues, defaultValues, schema } from "./sign-in-config";
 
 export default function SignIn() {
   const t = useTranslations("Auth");

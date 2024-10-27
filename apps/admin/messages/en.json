@@ -57,6 +57,11 @@
       "resetPasswordSuccess": "You’ll receive a password reset email if you have an account.",
       "resetPasswordCallbackSuccess": "Password reset was successfull.",
       "form": {
+        "email": {
+          "label": "Email",
+          "palceholder": "Your email address",
+          "error": "Email is required."
+        },
         "password": {
           "label": "New password",
           "palceholder": "Create a new password",

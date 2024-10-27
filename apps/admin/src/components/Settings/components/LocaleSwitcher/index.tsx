@@ -4,7 +4,7 @@ import { Locale, locales } from "@/i18n/config";
 import { Flex, Select, Typography } from "antd";
 import { useLocale, useTranslations } from "next-intl";
 import { useServerAction } from "zsa-react";
-import { localeAction } from "./localeAction";
+import { localeAction } from "./locale-action";
 
 export default function LocaleSwitcher() {
   const t = useTranslations("Settings");

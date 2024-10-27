@@ -57,6 +57,11 @@
       "resetPasswordSuccess": "Ak máš účet, príde ti email na obnovenie hesla.",
       "resetPasswordCallbackSuccess": "Resetovanie hesla prebehlo úspešne.",
       "form": {
+        "email": {
+          "label": "Email",
+          "palceholder": "Tvoja emailová adresa",
+          "error": "Email je povinný."
+        },
         "password": {
           "label": "Nové heslo",
           "palceholder": "Vytvor nové heslo",

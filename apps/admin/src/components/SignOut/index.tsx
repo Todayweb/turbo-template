@@ -4,7 +4,7 @@ import { LogoutOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useTranslations } from "next-intl";
 import { useFormState } from "react-dom";
-import { signOutAction } from "./signOutAction";
+import { signOutAction } from "./sign-out-action";
 
 export const SignOut = () => {
   const t = useTranslations("Navigation");

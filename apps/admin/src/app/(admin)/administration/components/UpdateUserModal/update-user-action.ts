@@ -5,7 +5,7 @@ import { adminProcedure, handleServerError } from "@/utils/zsa";
 import { prisma } from "@repo/db";
 import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
-import { schema } from "./updateUserConfig";
+import { schema } from "./update-user-config";
 
 export const updateUserAction = adminProcedure
   .createServerAction()

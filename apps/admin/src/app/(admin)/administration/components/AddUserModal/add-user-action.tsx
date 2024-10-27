@@ -10,7 +10,7 @@ import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
 import { ZSAError } from "zsa";
 import { AddUserEmail } from "./AddUserEmail";
-import { schema } from "./addUserConfig";
+import { schema } from "./add-user-config";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

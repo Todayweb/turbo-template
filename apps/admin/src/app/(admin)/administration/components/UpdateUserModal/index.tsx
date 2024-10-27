@@ -10,8 +10,8 @@ import { useForm } from "react-hook-form";
 import { useServerAction } from "zsa-react";
 import { useRoleOptions } from "../../hooks/useRoleOptions";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
-import { updateUserAction } from "./updateUserAction";
-import { FormValues, defaultValues, schema } from "./updateUserConfig";
+import { updateUserAction } from "./update-user-action";
+import { FormValues, defaultValues, schema } from "./update-user-config";
 
 export const UpdateUserModal = () => {
   const t = useTranslations("Administration");

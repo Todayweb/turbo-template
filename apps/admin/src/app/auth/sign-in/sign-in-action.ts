@@ -8,7 +8,7 @@ import * as argon2 from "argon2";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { ZSAError } from "zsa";
-import { schema } from "./signInConfig";
+import { schema } from "./sign-in-config";
 
 export const signInAction = publicProcedure
   .createServerAction()

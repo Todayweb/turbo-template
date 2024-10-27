@@ -5,7 +5,7 @@ import { Modal, Typography } from "antd";
 import { useTranslations } from "next-intl";
 import { useServerAction } from "zsa-react";
 import { useAdministrationContext } from "../../providers/AdministrationProvider";
-import { deleteUserAction } from "./deleteUserAction";
+import { deleteUserAction } from "./delete-user-action";
 
 export const DeleteUserModal = () => {
   const t = useTranslations("Administration");

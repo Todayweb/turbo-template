@@ -8,7 +8,7 @@ import {
   ActionUpdateButton,
 } from "@/components/ActionBar";
 import { UserAddOutlined } from "@ant-design/icons";
-import { useAdministrationContext } from "../../providers/AdministrationProvider";
+import { useAdministrationContext } from "../providers/AdministrationProvider";
 
 export const UserActionBar = () => {
   const { selectedRow, setShowAddUserModal, setShowDeleteUserModal, setShowUpdateUserModal } =
