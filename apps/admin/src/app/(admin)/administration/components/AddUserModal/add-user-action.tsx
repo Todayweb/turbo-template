@@ -40,7 +40,7 @@ export const addUserAction = adminProcedure
       });
 
       const { error } = await resend.emails.send({
-        from: "info@todayweb.sk",
+        from: process.env.RESEND_EMAIL as string,
         to: email,
         subject: t("addUser.email.subject"),
         react: <AddUserEmail email={email} password={generatedPassword} />,

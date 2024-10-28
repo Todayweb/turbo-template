@@ -7,7 +7,7 @@
       "dependsOn": ["^build", "^db:generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["BASE_URL", "RESEND_API_KEY"]
+      "env": ["BASE_URL", "RESEND_API_KEY", "RESEND_EMAIL"]
     },
     "dev": {
       "dependsOn": ["^db:generate"],

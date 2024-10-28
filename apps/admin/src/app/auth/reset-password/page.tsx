@@ -48,9 +48,17 @@ export default function ResetPassword() {
 
             <FormAlert type="error" message={error?.message} />
 
-            <Button type="primary" htmlType="submit" disabled={isSuccess} loading={isPending} block>
-              {t("passwordReset.resetPasswordSend")}
-            </Button>
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                disabled={isSuccess}
+                loading={isPending}
+                block
+              >
+                {t("passwordReset.resetPasswordSend")}
+              </Button>
+            </Form.Item>
 
             {isSuccess && (
               <FormAlert

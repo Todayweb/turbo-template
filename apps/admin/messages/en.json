@@ -56,6 +56,14 @@
       "resetPasswordSend": "Send instructions",
       "resetPasswordSuccess": "You’ll receive a password reset email if you have an account.",
       "resetPasswordCallbackSuccess": "Password reset was successfull.",
+      "token": {
+        "notValid": "Token is not valid or expired. Try to request new password again."
+      },
+      "email": {
+        "subject": " Reset password",
+        "message": "You requested to reset password. Click the link to set new password.",
+        "link": "Click me!"
+      },
       "form": {
         "email": {
           "label": "Email",

@@ -7,15 +7,17 @@ import { prisma } from "@repo/db";
 export type SessionOptional = { session: Session; user: User } | { session: null; user: null };
 export type SessionEnsured = { session: Session; user: User };
 
-export function generateSessionToken(): string {
+export const generateToken = () => {
   const bytes = new Uint8Array(20);
   crypto.getRandomValues(bytes);
-  const token = encodeBase32LowerCaseNoPadding(bytes);
-  return token;
-}
+  return encodeBase32LowerCaseNoPadding(bytes);
+};
 
-export async function createSession(token: string, userId: string): Promise<Session> {
-  const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+export const encodeToken = (token: string) =>
+  encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+
+export const createSession = async (token: string, userId: string): Promise<Session> => {
+  const sessionId = encodeToken(token);
   const session: Session = {
     id: sessionId,
     userId,
@@ -25,10 +27,10 @@ export async function createSession(token: string, userId: string): Promise<Sess
     data: session,
   });
   return session;
-}
+};
 
-export async function validateSessionToken(token: string): Promise<SessionOptional> {
-  const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+export const validateSessionToken = async (token: string): Promise<SessionOptional> => {
+  const sessionId = encodeToken(token);
   const result = await prisma.session.findUnique({
     where: {
       id: sessionId,
@@ -61,9 +63,9 @@ export async function validateSessionToken(token: string): Promise<SessionOption
   }
 
   return { session, user };
-}
+};
 
-export async function invalidateSession(sessionId?: string) {
+export const invalidateSession = async (sessionId?: string) => {
   if (!sessionId) return null;
   await prisma.session.delete({ where: { id: sessionId } });
-}
+};

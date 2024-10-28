@@ -21,6 +21,7 @@ To run this project, you will need to add the following environment variables to
 #### apps/admin/.env
 `BASE_URL`
 `RESEND_API_KEY`
+`RESEND_EMAIL`
 
 ## Run Locally
 

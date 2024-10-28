@@ -8,7 +8,7 @@ export const schema = (t: TFn) =>
     .object({
       password: z.string().min(1, t("Auth.passwordReset.form.password.error")),
       passwordConfirm: z.string().min(1, t("Auth.passwordReset.form.passwordConfirm.error.match")),
-      token: z.string().optional(),
+      token: z.string().nullable(),
     })
     .refine((data) => data.password === data.passwordConfirm, {
       message: "Auth.passwordReset.form.passwordConfirm.error.match",
@@ -18,5 +18,5 @@ export const schema = (t: TFn) =>
 export const defaultValues: FormValues = {
   password: "",
   passwordConfirm: "",
-  token: undefined,
+  token: null,
 };

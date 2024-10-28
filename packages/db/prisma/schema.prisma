@@ -8,10 +8,12 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(cuid())
-  email    String @unique
-  password String
-  role     Role   @default(editor)
+  id                          String    @id @default(cuid())
+  email                       String    @unique
+  password                    String
+  role                        Role      @default(editor)
+  passwordResetToken          String?   @unique
+  passwordResetTokenExpiresAt DateTime?
 
   sessions Session[]
 }

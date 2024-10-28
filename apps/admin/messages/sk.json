@@ -56,6 +56,14 @@
       "resetPasswordSend": "Poslať inštrukcie",
       "resetPasswordSuccess": "Ak máš účet, príde ti email na obnovenie hesla.",
       "resetPasswordCallbackSuccess": "Resetovanie hesla prebehlo úspešne.",
+      "token": {
+        "notValid": "Token je nesprávny alebo vypršal čas na reset hesla. Skús požiadať o reset hesla ešte raz."
+      },
+      "email": {
+        "subject": " Resetovať heslo",
+        "message": "Požiadal si o reset hesla. Klikni na link nižšie.",
+        "link": "Klik!"
+      },
       "form": {
         "email": {
           "label": "Email",
