@@ -17,6 +17,8 @@ import { prisma } from "./client";
       update: initUser,
       where: { email: initUser.email },
     });
+
+    console.log("Seed was successful.");
   } catch (error) {
     console.error(error);
     process.exit(1);
