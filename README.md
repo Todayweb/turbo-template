@@ -4,7 +4,7 @@
 ```
 - `web`: [Next.js](https://nextjs.org/) app
 - `@repo/db`: prisma db setup
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/ui`: a stub React component library shared by both `admin` and `web` applications
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 ```
 
@@ -51,6 +51,9 @@ Install dependencies
 
 Start the server
 
+```bash
+  turbo dev --filter=admin
+```
 ```bash
   turbo dev --filter=web
 ```
