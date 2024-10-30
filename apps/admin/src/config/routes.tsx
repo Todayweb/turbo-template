@@ -23,17 +23,14 @@ export const adminRoutesPermissions: Record<AdminRoute, Role[]> = {
 
 export const adminNavigationItems: {
   route: AdminRoute;
-  permissions: Role[];
   icon: JSX.Element;
 }[] = [
   {
     route: "home",
     icon: <HomeOutlined />,
-    permissions: adminRoutesPermissions.home,
   },
   {
     route: "administration",
     icon: <SafetyOutlined />,
-    permissions: adminRoutesPermissions.administration,
   },
 ];

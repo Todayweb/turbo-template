@@ -1,4 +1,4 @@
-import { adminNavigationItems, routes } from "@/config/routes";
+import { adminNavigationItems, adminRoutesPermissions, routes } from "@/config/routes";
 import { userHasPermissions } from "@/utils/userHasPermissions";
 import { Role } from "@prisma/client";
 import { useTranslations } from "next-intl";
@@ -15,6 +15,7 @@ export const useAdminNavigationItems = ({ role, skipHome }: Props) => {
   const items = adminNavigationItems.map(({ route, ...rest }) => ({
     key: routes[route],
     label: t(route),
+    permissions: adminRoutesPermissions[route],
     ...rest,
   }));
 
