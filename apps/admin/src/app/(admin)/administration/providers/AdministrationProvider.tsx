@@ -19,7 +19,7 @@ export type UserTableData = {
 
 type AdministrationProviderProps = {
   children: ReactNode;
-  data: Omit<User, "password">[];
+  data: Pick<User, "id" | "email" | "role">[];
   userId: string;
 };
 

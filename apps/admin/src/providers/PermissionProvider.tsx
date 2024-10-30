@@ -19,7 +19,7 @@ export const PermissionProvider = ({ children, role }: PermissionProviderProps) 
   const pathKey = getPathKey(pathName) as AdminRoute;
 
   if (role === "noAccess") notFound();
-  if (!adminRoutes.includes(pathKey)) notFound();
+  if (!adminRoutes[pathKey]) notFound();
   if (!userHasPermissions({ permissions: adminRoutesPermissions[pathKey], role })) notFound();
 
   return <PermissionContext.Provider value={null}>{children}</PermissionContext.Provider>;

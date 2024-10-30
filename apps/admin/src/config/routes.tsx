@@ -1,20 +1,20 @@
 import { HomeOutlined, SafetyOutlined } from "@ant-design/icons";
 import { Role } from "@prisma/client";
 
-export const routes = {
-  home: "/",
-  administration: "/administration",
+export const authRoutes = {
   signIn: "/auth/sign-in",
   resetPassword: "/auth/reset-password",
   resetPasswordCallback: "/auth/reset-password/callback",
 } as const;
 
-export const adminRoutes: Array<keyof Pick<typeof routes, "home" | "administration">> = [
-  "home",
-  "administration",
-] as const;
+export const adminRoutes = {
+  home: "/",
+  administration: "/administration",
+};
 
-export type AdminRoute = (typeof adminRoutes)[number];
+export const routes = { ...authRoutes, ...adminRoutes };
+
+export type AdminRoute = keyof typeof adminRoutes;
 
 export const adminRoutesPermissions: Record<AdminRoute, Role[]> = {
   home: [],
